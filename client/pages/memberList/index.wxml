@@ -1,0 +1,75 @@
+<template name="memberList">
+    <view class='bgCorF p5 pL20 corG f12'><text>提示:已达15种产品且全部为预售时才可在小区进行买卖交易！</text></view>
+
+          <view class='box bgCorE p10 pL20 pR20 boxVc mT10'>
+              <image class='photo' style="border-radius:22px;" mode="aspectFill" src="{{userInfo.avatarUrl}}"></image>
+              <view class='flex1 box boxV pL10'>
+                  <text class='f16 fb'>农业职业经理人/团队创建者</text>
+                  <text class='f16'>{{userInfo.nickName}}<text class='corC f12 pL5'>120条追溯信息</text></text>
+                  <text class='f12 cor6'>土豆(<text class='corR'>生长期</text>) 青椒\西红柿\花生</text>
+              </view>
+          </view>
+
+          <view class='box bgCorF p10 pL20 pR20 boxVc mT10'>
+              <image class='photo' mode="aspectFill" src="{{userInfo.avatarUrl}}"></image>
+              <view class='flex1 box boxV pL10'>
+                  <text class='f16'>{{userInfo.nickName}}<text class='corC f12 pL5'>120条追溯信息</text></text>
+                  <text class='f12 cor6'>土豆(<text class='corR'>生长期</text>) 青椒\西红柿\花生</text>
+              </view>
+              <i class="icon iconfont icon-delete corC"></i>
+          </view>
+
+          <view class='box bgCorF p10 pL20 pR20 boxVc mT10'>
+              <image class='photo' mode="aspectFill" src="{{userInfo.avatarUrl}}"></image>
+              <view class='flex1 box boxV pL10'>
+                  <text class='f16'>{{userInfo.nickName}}<text class='corC f12 pL5'>120条追溯信息</text></text>
+                  <text class='f12 cor6'>土豆(<text class='corR'>生长期</text>) 青椒\西红柿\花生</text>
+              </view>
+              <i class="icon iconfont icon-delete corC"></i>
+          </view>
+
+          <view class='box bgCorF p10 pL20 pR20 boxVc mT10'>
+              <image class='photo' mode="aspectFill" src="{{userInfo.avatarUrl}}"></image>
+              <view class='flex1 box boxV pL10'>
+                  <text class='f16'>{{userInfo.nickName}}<text class='corC f12 pL5'>120条追溯信息</text></text>
+                  <text class='f12 cor6'>土豆(<text class='corR'>生长期</text>) 青椒\西红柿\花生</text>
+              </view>
+              <i class="icon iconfont icon-delete corC"></i>
+          </view>
+
+          <view class='box bgCorF p10 pL20 pR20 boxVc mT10'>
+              <image class='photo' mode="aspectFill" src="{{userInfo.avatarUrl}}"></image>
+              <view class='flex1 box boxV pL10'>
+                  <text class='f16'>{{userInfo.nickName}}<text class='corC f12 pL5'>120条追溯信息</text></text>
+                  <text class='f12 cor6'>土豆(<text class='corR'>生长期</text>) 青椒\西红柿\花生</text>
+              </view>
+              <i class="icon iconfont icon-delete corC"></i>
+          </view>
+
+          <view class='box bgCorF p10 pL20 pR20 boxVc mT10'>
+              <image class='photo' mode="aspectFill" src="{{userInfo.avatarUrl}}"></image>
+              <view class='flex1 box boxV pL10'>
+                  <text class='f16'>{{userInfo.nickName}}<text class='corC f12 pL5'>120条追溯信息</text></text>
+                  <text class='f12 cor6'>土豆(<text class='corR'>生长期</text>) 青椒\西红柿\花生</text>
+              </view>
+              <i class="icon iconfont icon-delete corC"></i>
+          </view>
+
+          <view class='box bgCorF p10 pL20 pR20 boxVc mT10'>
+              <image class='photo' mode="aspectFill" src="{{userInfo.avatarUrl}}"></image>
+              <view class='flex1 box boxV pL10'>
+                  <text class='f16'>{{userInfo.nickName}}<text class='corC f12 pL5'>120条追溯信息</text></text>
+                  <text class='f12 cor6'>土豆(<text class='corR'>生长期</text>) 青椒\西红柿\花生</text>
+              </view>
+              <i class="icon iconfont icon-delete corC"></i>
+          </view>
+
+          <view class='box bgCorF p10 pL20 pR20 boxVc mT10'>
+              <image class='photo' mode="aspectFill" src="{{userInfo.avatarUrl}}"></image>
+              <view class='flex1 box boxV pL10'>
+                  <text class='f16'>{{userInfo.nickName}}<text class='corC f12 pL5'>120条追溯信息</text></text>
+                  <text class='f12 cor6'>土豆(<text class='corR'>生长期</text>) 青椒\西红柿\花生</text>
+              </view>
+              <i class="icon iconfont icon-delete corC"></i>
+          </view>
+</template>

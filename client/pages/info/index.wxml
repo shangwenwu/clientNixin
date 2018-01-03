@@ -1,0 +1,114 @@
+<!--pages/info/index.wxml-->
+<view>
+
+    <view class='tc f12 mT20 cor9'><text>晚上10:28</text></view>
+    <view class='mL10 mR10 m5 p10 bgCorF radius3 b1'>
+
+            <navigator url= "../infoDetail/index?infoId=12" class='pB10'>
+                <view class='focusImg' style="background:url(http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg) no-repeat 100% center;">
+                    <view class='title bgCor3 p5 f16 lH18 corF'>
+                      <text>中华人民共和国中华人民共和国</text>
+                    </view>
+                </view>
+            </navigator>
+
+            <navigator url= "../infoDetail/index?infoId=12" class='box bT1 pT10 pB10 boxVc'>
+                <text class='flex1 f14 pR10 lH20'>中华人民共和国中华人民共和国中华人民共和国中华人民共和国</text>
+                <image style="width: 50px; height: 50px; background-color: #eeeeee;" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+            </navigator>
+
+            <navigator url= "../infoDetail/index?infoId=12" class='box bT1 pT10 pB10 boxVc'>
+                <text class='flex1 f14 pR10 lH20'>中华人民共和国中华人民共和国中华人民共和国中华人民共和国</text>
+                <image style="width: 50px; height: 50px; background-color: #eeeeee;" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+            </navigator>
+
+            <navigator url= "../infoDetail/index?infoId=12" class='box bT1 pT10 pB10 boxVc'>
+                <text class='flex1 f14 pR10 lH20'>中华人民共和国中华人民共和国中华人民共和国中华人民共和国</text>
+                <image style="width: 50px; height: 50px; background-color: #eeeeee;" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+            </navigator>
+
+    </view>
+
+
+
+
+    <view class='tc f12 mT20 cor9'><text>晚上10:28</text></view>
+    <view class='mL10 mR10 m5 p10 bgCorF radius3 b1'>
+    
+      <view class='pB10'>
+          <view class='focusImg' style="background:url(http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg) no-repeat 100% center;">
+              <view class='title bgCor3 p5 f16 lH18 corF'>
+                <text>中华人民共和国中华人民共和国</text>
+              </view>
+          </view>
+      </view>
+
+      <navigator url= "../infoDetail/index?infoId=12" class='box bT1 pT10 pB10 boxVc'>
+          <text class='flex1 f14 pR10 lH20'>中华人民共和国中华人民共和国中华人民共和国中华人民共和国</text>
+          <image style="width: 50px; height: 50px; background-color: #eeeeee;" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+      </navigator>
+
+      <navigator url= "../infoDetail/index?infoId=12" class='box bT1 pT10 pB10 boxVc'>
+          <text class='flex1 f14 pR10 lH20'>中华人民共和国中华人民共和国中华人民共和国中华人民共和国</text>
+          <image style="width: 50px; height: 50px; background-color: #eeeeee;" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+      </navigator>
+
+      <navigator url= "../infoDetail/index?infoId=12" class='box bT1 pT10 pB10 boxVc'>
+          <text class='flex1 f14 pR10 lH20'>中华人民共和国中华人民共和国中华人民共和国中华人民共和国</text>
+          <image style="width: 50px; height: 50px; background-color: #eeeeee;" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+      </navigator>
+
+    </view>
+
+
+
+
+
+
+    <view class='tc f12 mT20 cor9'><text>晚上10:28</text></view>
+    <view class='mL10 mR10 m5 p10 bgCorF radius3 b1'>
+    
+      <view>
+          <view class='focusImg' style="background:url(http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg) no-repeat 100% center;">
+              <view class='title bgCor3 p5 f16 lH18 corF'>
+                <text>中华人民共和国中华人民共和国中华人民共和国中华人民共和国</text>
+              </view>
+          </view>
+      </view>
+
+    </view>
+
+
+
+
+
+
+    <view class='tc f12 mT20 cor9'><text>晚上10:28</text></view>
+    <view class='mL10 mR10 m5 p10 bgCorF radius3 b1'>
+    
+      <view class='pB10'>
+          <view class='focusImg' style="background:url(http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg) no-repeat 100% center;">
+              <view class='title bgCor3 p5 f16 lH18 corF'>
+                <text>中华人民共和国中华人民共和国</text>
+              </view>
+          </view>
+      </view>
+
+      <navigator url= "../infoDetail/index?infoId=12" class='box bT1 pT10 pB10 boxVc'>
+          <text class='flex1 f14 pR10 lH20'>中华人民共和国中华人民共和国中华人民共和国中华人民共和国</text>
+          <image style="width: 50px; height: 50px; background-color: #eeeeee;" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+      </navigator>
+
+      <navigator url= "../infoDetail/index?infoId=12" class='box bT1 pT10 pB10 boxVc'>
+          <text class='flex1 f14 pR10 lH20'>中华人民共和国中华人民共和国中华人民共和国中华人民共和国</text>
+          <image style="width: 50px; height: 50px; background-color: #eeeeee;" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+      </navigator>
+
+      <navigator url= "../infoDetail/index?infoId=12" class='box bT1 pT10 pB10 boxVc'>
+          <text class='flex1 f14 pR10 lH20'>中华人民共和国中华人民共和国中华人民共和国中华人民共和国</text>
+          <image style="width: 50px; height: 50px; background-color: #eeeeee;" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+      </navigator>
+
+    </view>
+
+</view>

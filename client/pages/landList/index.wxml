@@ -1,0 +1,67 @@
+<template name="landList">
+    
+          <view class='bgCorF p5 pL20 corG f12 mB10'><text>提示:希望你们团队成员的共享土地能够集中起来管理，也方便组成团队的农家场！</text></view>
+
+
+
+
+          <view class='bgCorF p10 pL20 pR20 flex1 box boxV f14  mB10'>
+
+                  <view class='box boxVc bB1 mB10 pB10'>
+                      <image class='mR2 mT2 picUser' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                      <view class='box boxV pL10'>
+                          <text class='corR f16'>500元<text class='f12'>/每年(一分地)</text></text>
+                          <text class='f14'>攀岩人</text>
+                      </view>
+                  </view>
+                  
+                  <text class='f12 cor6'>采摘信息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述采摘信息描述采摘信息描述</text>
+                  <view class='box'>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                  </view>
+          </view>
+
+
+
+          <view class='bgCorF p10 pL20 pR20 flex1 box boxV f14  mB10'>
+
+                  <view class='box boxVc bB1 mB10 pB10'>
+                      <image class='mR2 mT2 picUser' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                      <view class='box boxV pL10'>
+                          <text class='corR f16'>500元<text class='f12'>/每年(一分地)</text></text>
+                          <text class='f14'>攀岩人</text>
+                      </view>
+                  </view>
+                  
+                  <text class='f12 cor6'>采摘信息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述采摘信息描述采摘信息描述</text>
+                  <view class='box'>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                  </view>
+          </view>
+
+
+
+          <view class='bgCorF p10 pL20 pR20 flex1 box boxV f14 mB10'>
+
+                  <view class='box boxVc bB1 mB10 pB10'>
+                      <image class='mR2 mT2 picUser' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                      <view class='box boxV pL10'>
+                          <text class='corR f16'>500元<text class='f12'>/每年(一分地)</text></text>
+                          <text class='f14'>攀岩人</text>
+                      </view>
+                  </view>
+                  
+                  <text class='f12 cor6'>采摘信息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述采摘信息描述采摘信息描述</text>
+                  <view class='box'>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                  </view>
+          </view>
+
+
+</template>

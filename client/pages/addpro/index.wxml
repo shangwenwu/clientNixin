@@ -1,0 +1,26 @@
+<!--pages/addpro/index.wxml-->
+<view class='box boxV ps0'>
+
+      <scroll-view scroll-x class='box hidden bgCorF pT10 pL10 pR10'>
+        <view class='box pR20'>
+          <view class='cursor bgCorF4 p10 pL20 pR20  f16 radiusTR5 tn radiusTL5'>西红柿</view>
+          <view class='cursor bgCorF cor9 p10 pL20 pR20  f16 radiusTR5 tn radiusTL5'>土豆</view>
+          <view class='cursor bgCorF cor9 p10 pL20 pR20 f16 radiusTR5 tn radiusTL5'>添加产品</view>
+        </view>
+      </scroll-view>
+
+    <view class='bgCorF p20 mT10 f16'>
+        <textarea auto-height maxlength='150' placeholder="150字内描述..." />
+    </view>
+    <view class='bgCorF p20 bT1'>
+        <i class="icon iconfont icon-camerafill corC" style="font-size:60px;"></i>
+    </view>
+
+
+    <view class='flex1'></view>
+    
+    <view class='box bT1 bgCorF tc'>
+        <navigator delta='1' class='flex1 p15 br1' open-type="navigateBack">返回</navigator>
+        <view class='flex1 p15 corG'><text>保存</text></view>
+    </view>
+</view>

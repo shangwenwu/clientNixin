@@ -1,0 +1,38 @@
+<!--pages/shop/index.wxml-->
+<import src="../productList/index.wxml"/>
+<import src="../pickingList/index.wxml"/>
+<import src="../landList/index.wxml"/>
+<import src="../sortingList/index.wxml"/>
+<import src="../memberList/index.wxml"/>
+
+<view class="box boxV">
+    <image style="width: 100%; height: 140px;" mode="aspectFill" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3243644476,1991991288&fm=27&gp=0.jpg"></image>
+
+    <text class='f18 pL10 pR10 pT5 fb'>农业蔬菜种植直供队</text>
+    <text class='f12 pL10 pR10 pB5 cor9'>产品5种 成员4人 运输车1辆 直供小区六里桥莲花池南里小区</text>
+
+    <view class='box f14 mB10 mT5 bgCorF'>
+        <view data-state="1" class='flex1 cursor tc pT10 pB10 {{tabState==1?"bBActive corG":"bB2 corA"}}' bindtap="changeState"><text>团队产品</text></view>
+        <view data-state="2" class='flex1 cursor tc pT10 pB10 {{tabState==2?"bBActive corG":"bB2 corA"}}' bindtap="changeState"><text>旅游采摘</text></view>
+        <view data-state="3" class='flex1 cursor tc pT10 pB10 {{tabState==3?"bBActive corG":"bB2 corA"}}' bindtap="changeState"><text>共享土地</text></view>
+        <view data-state="4" class='flex1 cursor tc pT10 pB10 {{tabState==4?"bBActive corG":"bB2 corA"}}' bindtap="changeState"><text>分拣配送</text></view>
+        <view data-state="5" class='flex1 cursor tc pT10 pB10 {{tabState==5?"bBActive corG":"bB2 corA"}}' bindtap="changeState"><text>团队成员</text></view>
+    </view>
+
+      <view wx:if="{{tabState == 1}}">
+            <template is="productList" />
+      </view>
+      <view wx:if="{{tabState == 2}}">
+          <template is="pickingList" />
+      </view>
+      <view wx:if="{{tabState == 3}}">
+          <template is="landList" />
+      </view>
+      <view wx:if="{{tabState == 4}}">
+          <template is="sortingList" data="{{showPorduct:showPorduct,productData:productData,currentProductIndex:currentProductIndex,community:community}}"/>
+      </view>
+      <view wx:if="{{tabState == 5}}">
+          <template is="memberList" />
+      </view>
+    
+</view>

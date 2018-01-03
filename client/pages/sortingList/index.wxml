@@ -1,0 +1,204 @@
+<template name="sortingList">
+
+          <!-- <scroll-view scroll-x bindscroll="scroll" scroll-top="{{scrollLeft}}">
+            
+          </scroll-view>
+
+         
+          <button size="mini" bindtap="tapMove">click me to scroll</button> -->
+
+
+          <view class='bgCorF p10 pL20 pR20 bB1 f14 mB10'>
+              <view class='box bB1 boxVc pB5'>
+                  <view><text class='f14'>发车时间：<text class="fb">2017-12-29 09:00</text></text></view>
+                  <view class='flex1'></view>
+                   <view class='corG f14 p5 radius3'>
+                      <text>正在分拣</text>
+                  </view> 
+              </view>
+
+             
+                  <scroll-view scroll-x class='f12 flex1 hidden mT5 mB5 bB1 pB5'>
+                      <view class='totalSales box corB' style="width:{{productData.length*75+'px'}};">
+                           
+                          <view wx:for="{{productData}}" wx:key="{{index}}" class='box boxHc boxVc row {{index == currentProductIndex ? "salesActive" : ""}}'>
+                              <view wx:if="{{item.leader}}" bindtap='changeProduct' data-index="{{index}}" class='box boxV boxVc'>
+                                  <text class='fb'>经理检查</text>
+                                  <text class='fb'>分拣情况</text>
+                              </view>
+                              <view wx:if="{{!item.leader}}" class='box boxV boxVc' bindtap='{{item.member.name == productData[0].member.name ? "changeProduct" : ""}}' data-index="{{index}}">
+                                <text class='fb'>{{item.sales}}</text>
+                                <text>{{item.name}}</text>
+                              </view>
+                              <i wx:if="{{item.flag}}"  class="icon iconfont icon-check corF box boxVc boxHc fb whr14 mL5 {{index == currentProductIndex ? 'bgCorG' : 'bgCorC'}}" style="font-size:12px;"></i>
+                          </view>
+
+                      </view>
+                  </scroll-view>
+
+                          <view wx:if="{{currentProductIndex != 'false'}}">
+                                <view class='box mT10 f12 pL5'>
+                                    <view wx:for="{{community.data}}"  wx:key="{{item.value}}" class='p5 flex1 tc mR5 box {{community.current[0] == index ? "bgCorG corF radius3" : "b1 boxVc boxHc"}} {{item.flag ? "boxVc boxHc" : "boxV"}}' bindtap="changeCurrent" data-index="{{index}}">
+                                      <view class='box boxV'>
+                                        {{item.value}}
+                                        <text wx:if="{{item.flag}}">分拣完成</text>
+                                        <text wx:if="{{!item.flag}}">正在分拣50斤</text>
+                                      </view>
+                                      <i wx:if="{{item.flag}}" class="icon iconfont icon-check corG bgCorF box boxVc boxHc fb whr20 mL5" style="font-size:16px;"></i>
+                                    </view>
+                                </view>
+
+                                <view class='m5 mT10 pT5 pB5 f12 bB1 box boxVc'>
+                                    <image class='whr30 mR5' mode="aspectFill" src="{{productData[currentProductIndex].member.photo}}"></image>
+                                    <view class='box boxV'>
+                                      <text>{{productData[currentProductIndex].member.name}}正在分拣：{{community.data[community.current[0]].value}}</text>
+                                      <text><text class='f16 corR'>{{community.currentPosition}}</text>的{{productData[currentProductIndex].name}}订单</text>
+                                    </view>
+                                    <text class='flex1'></text>
+                                    <i wx:if="{{community.current.length > 2}}" bindtap="changeCurrent" data-index="back" class="icon iconfont icon-forwardfill bgCorC corF radius3 p2 box boxVc"></i>
+                                </view>
+
+
+
+                                <view wx:if="{{community.current.length == 2}}" class='box mT5 boxWrap'>
+                                    <view wx:for="{{community.data[community.current[0]].children}}" wx:key="{{item.value}}" class='w29 m5 pT10 pB10 b1 radius3 tc corA {{(community.current[1] == index) ? "active" : ""}}' bindtap="changeCurrent" data-index="{{1+'_'+index}}">{{item.value}} <i wx:if="{{item.flag}}" class="icon iconfont icon-check corG" style="font-size:18px;"></i></view>
+                                </view>
+
+                                <view wx:if="{{community.current.length == 3}}" class='box mT5 boxWrap'>
+                                    <view wx:for="{{community.data[community.current[0]].children[community.current[1]].children}}" wx:key="{{item.value}}" class='w29 m5 pT10 pB10 b1 radius3 tc corA {{(community.current[2] == index) ? "active" : ""}}' bindtap="changeCurrent" data-index="{{2+'_'+index}}">{{item.value}} <i wx:if="{{item.flag}}" class="icon iconfont icon-check corG" style="font-size:18px;"></i></view>
+                                </view>
+
+
+                                <view wx:if="{{community.current.length == 4 && !showPorduct}}" class='box mT5 boxWrap'>
+                                    <view wx:for="{{community.data[community.current[0]].children[community.current[1]].children[community.current[2]].children}}" wx:key="{{item.value}}" class='w29 m5 pT10 pB10 b1 radius3 tc corA {{(community.current[3] == index) ? "active" : ""}}' bindtap="changeCurrent" data-index="{{3+'_'+index}}" data-showPorduct="{{item.value?false:true}}">{{item.value ? item.value : item.num+'室'}} <i wx:if="{{item.flag}}" class="icon iconfont icon-check corG" style="font-size:18px;"></i></view>
+                                </view>
+
+                                <view wx:if="{{community.current.length == 5 && !showPorduct}}" class='box mT5 boxWrap'>
+                                    <view wx:for="{{community.data[community.current[0]].children[community.current[1]].children[community.current[2]].children[community.current[3]].children}}" wx:key="{{item.value}}" class='w29 m5 pT10 pB10 b1 radius3 tc corA {{(community.current[4] == index) ? "active" : ""}}' bindtap="changeCurrent" data-index="{{4+'_'+index}}" data-showPorduct="{{item.value?'false':'true'}}">{{item.value ? item.value : item.num+'室'}} <i wx:if="{{item.flag}}" class="icon iconfont icon-check corG" style="font-size:18px;"></i></view>
+                                </view>
+
+                                <view wx:if="{{showPorduct && productData[currentProductIndex].name}}" class='box boxV boxVc p10'>
+                                    <image class='whr50 mB5' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                                    <text class='f14'>需要分拣<text class='f18 corR fb'>5斤</text>{{productData[currentProductIndex].name}}</text>
+                                    <text class='corB f12'>放到农业职业经理人指定的货架上</text>
+                                    <button size="mini" class='mT5 bgCorG corF radius3' hover-class="btn-hover" bindtap='finishPro'> 分拣完成 </button>
+                                </view> 
+
+                                <view wx:if="{{showPorduct && !productData[currentProductIndex].name}}" class='box boxVc boxWrap boxHc'>
+                                    <view class='box boxV boxVc p10'>
+                                        <image class='whr50 mB5' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                                        <text class='f14'>土豆<text class='corR fb'>5斤</text></text>
+                                    </view> 
+                                    <view class='box boxV boxVc p10'>
+                                        <image class='whr50 mB5' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                                        <text class='f14'>土豆<text class='corR fb'>5斤</text></text>
+                                    </view> 
+                                    <view class='box boxV boxVc p10'>
+                                        <image class='whr50 mB5' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                                        <text class='f14'>土豆<text class='corR fb'>5斤</text></text>
+                                    </view> 
+                                    <view class='box boxV boxVc p10'>
+                                        <image class='whr50 mB5' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                                        <text class='f14'>土豆<text class='corR fb'>5斤</text></text>
+                                    </view> 
+                                    <view class='box boxV boxVc p10'>
+                                        <image class='whr50 mB5' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                                        <text class='f14'>土豆<text class='corR fb'>5斤</text></text>
+                                    </view> 
+                                    <view class='box boxV boxVc p10'>
+                                        <image class='whr50 mB5' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                                        <text class='f14'>土豆<text class='corR fb'>5斤</text></text>
+                                    </view> 
+                                    <view class='box boxV boxVc p10'>
+                                        <image class='whr50 mB5' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                                        <text class='f14'>土豆<text class='corR fb'>5斤</text></text>
+                                    </view> 
+                                    <view class='box boxV boxVc p10'>
+                                        <image class='whr50 mB5' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                                        <text class='f14'>土豆<text class='corR fb'>5斤</text></text>
+                                    </view> 
+                                    <view class='box boxV boxVc p10'>
+                                        <image class='whr50 mB5' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                                        <text class='f14'>土豆<text class='corR fb'>5斤</text></text>
+                                    </view> 
+                                    <view class='box boxV boxVc p10'>
+                                        <image class='whr50 mB5' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                                        <text class='f14'>土豆<text class='corR fb'>5斤</text></text>
+                                    </view> 
+                                </view>
+
+                                <view wx:if="{{showPorduct && !productData[currentProductIndex].name}}" class='box boxV boxVc p10'>
+                                    <text class='corB f12'>请确认该住户订单的分拣情况</text>
+                                    <button size="mini" class='mT5 bgCorG corF radius3' hover-class="btn-hover" bindtap='finishPro'> 订单分拣正确 </button>
+                                </view> 
+
+                          </view>
+
+          </view>
+
+
+          <view class='bgCorF p10 pL20 pR20 bB1 f14 mB10'>
+              <view class='box bB1 boxVc pB5'>
+                  <view><text class='f14 cor9'>时间：<text class="fb">2017-11-20 09:00</text></text></view>
+              </view>
+
+              <scroll-view scroll-x class='f12 flex1 hidden mT5 mB5 bB1 pB5'>
+                      <view class='totalSales box corB' style="width:{{productData[0].leader ? (productData.length-1)*75+'px' : productData.length*75+'px'}};">
+                           
+                          <view wx:for="{{productData}}" wx:key="{{index}}" wx:if="{{!item.leader}}" class='box boxHc boxVc row'>
+                              <view class='box boxV boxVc'>
+                                <text class='fb'>{{item.sales}}</text>
+                                <text>{{item.name}}</text>
+                                <image class='whr30 mT5' mode="aspectFill" src="{{item.member.photo}}"></image>
+                              </view>
+                          </view>
+
+                      </view>
+                  </scroll-view>
+
+          </view>
+
+
+          <view class='bgCorF p10 pL20 pR20 bB1 f14 mB10'>
+              <view class='box bB1 boxVc pB5'>
+                  <view><text class='f14 cor9'>时间：<text class="fb">2017-11-20 09:00</text></text></view>
+              </view>
+
+              <scroll-view scroll-x class='f12 flex1 hidden mT5 mB5 bB1 pB5'>
+                      <view class='totalSales box corB' style="width:{{productData[0].leader ? (productData.length-1)*75+'px' : productData.length*75+'px'}};">
+                           
+                          <view wx:for="{{productData}}" wx:key="{{index}}" wx:if="{{!item.leader}}" class='box boxHc boxVc row'>
+                              <view class='box boxV boxVc'>
+                                <text class='fb'>{{item.sales}}</text>
+                                <text>{{item.name}}</text>
+                                <image class='whr30 mT5' mode="aspectFill" src="{{item.member.photo}}"></image>
+                              </view>
+                          </view>
+
+                      </view>
+                  </scroll-view>
+
+          </view>
+
+
+          <view class='bgCorF p10 pL20 pR20 bB1 f14 mB10'>
+              <view class='box bB1 boxVc pB5'>
+                  <view><text class='f14 cor9'>时间：<text class="fb">2017-11-20 09:00</text></text></view>
+              </view>
+
+              <scroll-view scroll-x class='f12 flex1 hidden mT5 mB5 bB1 pB5'>
+                      <view class='totalSales box corB' style="width:{{productData[0].leader ? (productData.length-1)*75+'px' : productData.length*75+'px'}};">
+                           
+                          <view wx:for="{{productData}}"  wx:key="{{index}}" wx:if="{{!item.leader}}" class='box boxHc boxVc row'>
+                              <view class='box boxV boxVc'>
+                                <text class='fb'>{{item.sales}}</text>
+                                <text>{{item.name}}</text>
+                                <image class='whr30 mT5' mode="aspectFill" src="{{item.member.photo}}"></image>
+                              </view>
+                          </view>
+
+                      </view>
+                  </scroll-view>
+
+          </view>
+</template>

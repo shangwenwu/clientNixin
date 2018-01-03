@@ -1,0 +1,67 @@
+<!--pages/setting/index.wxml-->
+<view class="box boxV">
+  
+    <view class="settingBanner box boxVb" style="background-image:url(http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg);">
+        <view class='flex1'></view>
+        <view class='box boxV pR10 corF f16 shadow1 fb mB10'>
+            <view class='itemVe'>
+                <i class="icon iconfont icon-star {{star>=8 ? 'corO' : 'corF opacity5'}}"></i>
+                <i class="icon iconfont icon-star {{star>=7 ? 'corO' : 'corF opacity5'}}"></i>
+                <i class="icon iconfont icon-star {{star>=6 ? 'corO' : 'corF opacity5'}}"></i>
+                <i class="icon iconfont icon-star {{star>=5 ? 'corO' : 'corF opacity5'}}"></i>
+                <i class="icon iconfont icon-star {{star>=4 ? 'corO' : 'corF opacity5'}}"></i>
+                <i class="icon iconfont icon-star {{star>=3 ? 'corO' : 'corF opacity5'}}"></i>
+                <i class="icon iconfont icon-star {{!star ? 'corO' : 'corF'}}"></i>
+                <i class="icon iconfont icon-star {{!star ? 'corO' : 'corF'}}"></i>
+            </view>
+            <input class='tr' placeholder="请输入昵称" value="{{userInfo.nickName}}" />
+        </view>
+        <image class='mR20 photo mB10' mode="aspectFill" src="{{userInfo.avatarUrl}}"></image>
+    </view>
+
+
+<view class='bgCorF f16 p10 pL20 pR20 bT1 bB1  box boxVc'>
+        <view class='cor9'>供应商姓名</view>
+        <input class='tr flex1' placeholder="请输入姓名" value="{{supplier.name ? supplier.name : ''}}" bindconfirm="saveData" data-attr="name"/>
+</view> 
+<view class='bgCorF f16 p10 pL20 pR20 bB1  box boxVc'>
+        <view class='cor9'>供应商地址</view>
+        <input class='tr flex1' placeholder="请输入地址" value="{{supplier.address ? supplier.address : ''}}" bindconfirm="saveData" data-attr="address"/>
+</view> 
+<view class='bgCorF f16 p10 pL20 pR20 bB1  box boxVc'>
+        <view class='cor9'>联系方式</view>
+        <input class='tr flex1' type="number" placeholder="请输入联系方式" value="{{supplier.mobile ? supplier.mobile : ''}}" bindconfirm="saveData" data-attr="mobile"/>
+</view> 
+<view class='bgCorF f16 p10 pL20 pR20 bB1  box boxVc'>
+        <view class='cor9'>大棚数量</view>
+        <input class='tr flex1' type="number" placeholder="请输入大棚数量" value="{{supplier.num ? supplier.num : ''}}"  bindconfirm="saveData" data-attr="num"/>
+</view> 
+
+<view class='bgCorF f16 p10 pL20 pR20 bB1  mT10'>
+        <view class='cor9 bB1 pB5 mB5'>上传大棚图片</view>
+        <view class="box boxWrap" wx:if="{{imgUrl}}">
+            <view wx:for="{{imgUrl}}" wx:key="index">
+                <image src="{{ item }}" mode="aspectFill" class="pic" bindtap="previewImage"></image>
+                <i wx:if="{{imgUrl.length-1 == index}}" bindtap="doUpload"  class="icon iconfont icon-camera" style="font-size:70px; color:#ddd;"></i>
+            </view>
+            <i wx:if="{{!imgUrl.length}}" bindtap="doUpload"  class="icon iconfont icon-camera" style="font-size:70px; color:#ddd;"></i>
+        </view>
+</view> 
+
+<view class='bgCorF f16 p10 pL20 pR20 bB1  mT10'>
+        <view class='cor9'>资质证书</view>
+        <view class="box boxWrap" wx:if="{{imgUrl}}">
+            <view wx:for="{{imgUrl}}" wx:key="index">
+                <image src="{{ item }}" mode="aspectFill" class="pic" bindtap="previewImage"></image>
+                <i wx:if="{{imgUrl.length-1 == index}}" bindtap="doUpload"  class="icon iconfont icon-camera" style="font-size:70px; color:#ddd;"></i>
+            </view>
+            <i wx:if="{{!imgUrl.length}}" bindtap="doUpload"  class="icon iconfont icon-camera" style="font-size:70px; color:#ddd;"></i>
+        </view>
+</view> 
+
+
+    <view class='p20'>
+        <button type="default" style="background-color:#59C6A6; color:#fff;" > 保 存 </button>
+    </view>     
+
+</view>

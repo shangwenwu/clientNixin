@@ -1,13 +1,59 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/addCgi/addCgi"
+    "pages/team/index",
+    "pages/productList/index",
+    "pages/pickingList/index",
+    "pages/landList/index",
+    "pages/sortingList/index",
+    "pages/memberList/index",
+    "pages/setting/index",
+    "pages/detail/index",
+    "pages/addpro/index",
+    "pages/info/index",
+    "pages/infoDetail/index"
   ],
   "window":{
     "backgroundColor":"#F6F6F6",
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "Wafer Quick Start",
+    "navigationBarBackgroundColor": "#eee",
+    "navigationBarTitleText": "泥信",
     "navigationBarTextStyle":"black"
-  }
+  },
+  "tabBar": {
+    "color": "#b7b7b7",
+    "selectedColor": "#59C6A6",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "我的",
+        "selectedIconPath": "images/icon01.png",
+        "iconPath": "images/icon1.png"
+      },
+      {
+        "pagePath": "pages/team/index",
+        "text": "团队",
+        "selectedIconPath": "images/icon02.png",
+        "iconPath": "images/icon2.png"
+      },
+      {
+        "pagePath": "pages/info/index",
+        "text": "资讯",
+        "selectedIconPath": "images/icon04.png",
+        "iconPath": "images/icon4.png"
+      },
+      {
+        "pagePath": "pages/setting/index",
+        "text": "设置",
+        "selectedIconPath": "images/icon05.png",
+        "iconPath": "images/icon5.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
 }

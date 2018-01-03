@@ -1,0 +1,141 @@
+<!--pages/productList/index.wxml-->
+
+<template name="row">
+  {{a1}}
+  {{b}}
+</template>
+
+<template name="productList111">
+    <text>pages/productList/index.wxml</text>
+    <view><text>productList 团队产品</text></view>
+    <template is="row" data="{{a1:a,b:b}}" />
+</template>
+
+<template name="pickingList">
+
+    
+          <!-- <view class='bgCorF p10 pL20 pR20 box mB10 box f14 boxV'>
+              <view class='box boxVc bB1 pL10 pR10 pB5 mB10'>
+                  <text class='corA'>未发布：</text>
+                  <image style="width: 44px; height: 44px; border-radius:22px; background-color: #eeeeee; opacity:.4;" class='mR5 mB5' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                  <image style="width: 44px; height: 44px; border-radius:22px; background-color: #eeeeee; opacity:.4;" class='mR5 mB5' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                  <image style="width: 44px; height: 44px; border-radius:22px; background-color: #eeeeee; opacity:.4;" class='mR5 mB5' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                  <image style="width: 44px; height: 44px; border-radius:22px; background-color: #eeeeee; opacity:.4;" class='mR5 mB5' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+              </view>
+              
+              <view class='box boxVc bB1 pL10 pR10 pB5 mB10'>
+                  <text class='corA'>已发布：</text>
+                  <image class='mR5 mB5 picUser' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                  <image class='mR5 mB5 picUser' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+              </view>
+
+              <text class='corG'>所有成员全部发布旅游采摘信息后，才可以对消费者游客进行公布。</text>
+          </view> -->
+
+          <view class='bgCorF p10 pL20 pR20 box'>
+              <text class='flex1'>二天游<text class='f14 pL5 corA'>5户农场、3个景点</text></text>
+              <text class='corR'>100元/人</text>
+          </view>
+          <view class='bgCorF bB1  p10 pL20 pR20 f16 corA bT1'><text>时间轴：</text></view>
+
+
+
+          <view class='box bgCorF p10 pL20 pR20 boxVc'>
+              <view class='box boxV boxVc pR20'>
+                  <image class='mR2 mT2 picUser' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                  <text class='fb f14 mT5'>08:00-10:00</text>
+                  <text class='f14'>第一天</text>
+              </view>
+              <view class='flex1 box boxV f14'>
+                  <text class='corG f16'>采摘草莓</text>
+                  <text class='f12 cor6'>采摘信息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述采摘信息描述采摘信息描述</text>
+                  <view class='box'>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                  </view>
+              </view>
+          </view>
+
+
+
+          <view class='box bgCorF p10 pL20 pR20 boxVc'>
+              <view class='box boxV boxVc pR20'>
+                  <image class='mR2 mT2 picUser' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                  <text class='fb f14 mT5'>11:00-12:00</text>
+                  <text class='f14'>第一天</text>
+              </view>
+              <view class='flex1 box boxV f14'>
+                  <text class='corG f16'>采摘西红柿</text>
+                  <text class='f12 cor6'>采摘信息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述采摘信息描述采摘信息描述</text>
+                  <view class='box'>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                  </view>
+              </view>
+          </view>
+
+
+
+
+          <view class='box bgCorF p10 pL20 pR20 boxVc'>
+              <view class='box boxV boxVc pR20'>
+                  <image class='mR2 mT2 picUser' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                  <text class='fb f14 mT5'>12:00-13:00</text>
+                  <text class='f14'>第一天</text>
+              </view>
+              <view class='flex1 box boxV f14'>
+                  <text class='corG f16'>农家饭</text>
+                  <text class='f12 cor6'>采摘信息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述采摘信息描述采摘信息描述</text>
+                  <view class='box'>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                  </view>
+              </view>
+          </view>
+
+
+
+
+          <view class='box bgCorF p10 pL20 pR20 boxVc'>
+              <view class='box boxV boxVc pR20'>
+                  <image class='mR2 mT2 picUser' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                  <text class='fb f14 mT5'>13:00-18:00</text>
+                  <text class='f14'>第一天</text>
+              </view>
+              <view class='flex1 box boxV f14'>
+                  <text class='corG f16'>邺城博物馆</text>
+                  <text class='f12 cor6'>采摘信息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述采摘信息描述采摘信息描述</text>
+                  <view class='box'>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                  </view>
+              </view>
+          </view>
+
+
+
+          <view class='box bgCorF p10 pL20 pR20 boxVc'>
+              <view class='box boxV boxVc pR20'>
+                  <image class='mR2 mT2 picUser' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                  <text class='fb f14 mT5'>18:00-20:00</text>
+                  <text class='f14'>第一天</text>
+              </view>
+              <view class='flex1 box boxV f14'>
+                  <text class='corG f16'>住宿农家院</text>
+                  <text class='f12 cor6'>采摘信息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述采摘信息描述采摘信息描述</text>
+                  <view class='box'>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                  </view>
+              </view>
+          </view>
+
+
+
+
+</template>

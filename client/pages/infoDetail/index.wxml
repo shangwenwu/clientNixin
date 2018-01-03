@@ -1,0 +1,19 @@
+<!--pages/infoDetail/index.wxml-->
+<import src="../wxParse/wxParse.wxml"/>
+
+
+<view class='p20 bgCorF'>
+   <view  class='f20 lH30'>
+      <text>{{infoId}}田园综合体是农业还是地产，还综合体是农业还是地产，还是旅游呢？</text>
+   </view>
+   <view class='box corA f16 mT10 mB20'>
+      <text>2017-11-29</text>
+      <text class='pL10 pR10'>泥信网</text>
+      <i class="icon iconfont icon-like">收藏</i>
+   </view>
+
+   <view class='f16 lH30' style="text-align:justify">
+      <!--这里data中article为bindName-->
+      <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+   </view>
+</view>
