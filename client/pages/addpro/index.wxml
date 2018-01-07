@@ -1,26 +1,40 @@
-<!--pages/addpro/index.wxml-->
 <view class='box boxV ps0'>
 
       <scroll-view scroll-x class='box hidden bgCorF pT10 pL10 pR10'>
         <view class='box pR20'>
-          <view class='cursor bgCorF4 p10 pL20 pR20  f16 radiusTR5 tn radiusTL5'>西红柿</view>
-          <view class='cursor bgCorF cor9 p10 pL20 pR20  f16 radiusTR5 tn radiusTL5'>土豆</view>
-          <view class='cursor bgCorF cor9 p10 pL20 pR20 f16 radiusTR5 tn radiusTL5'>添加产品</view>
+          <!--view bindtap="" class='cursor bgCorF4 p10 pL20 pR20  f16 radiusTR5 tn radiusTL5'>西红柿</view>
+          <view class='cursor bgCorF cor9 p10 pL20 pR20  f16 radiusTR5 tn radiusTL5'>土豆</view-->
+          <view wx:for="{{productList}}" wx:key="*this" bindtap="changeCurrentProduct" data-proid="{{item.category_id}}" data-proname="{{item.name}}" class='cursor p10 pL20 pR20  f16 radiusTR5 tn radiusTL5 {{currentProductId == item.category_id ? "bgCorF4" : "bgCorF cor9"}}'>{{item.name}}</view>
+          <view class='cursor p10 pL20 pR20 f16 radiusTR5 tn radiusTL5 {{currentProductId ? "bgCorF cor9" : "bgCorF4"}}' data-proid='' data-proname="" bindtap="changeCurrentProduct">添加产品</view>
         </view>
       </scroll-view>
 
-    <view class='bgCorF p20 mT10 f16'>
-        <textarea auto-height maxlength='150' placeholder="150字内描述..." />
-    </view>
-    <view class='bgCorF p20 bT1'>
-        <i class="icon iconfont icon-camerafill corC" style="font-size:60px;"></i>
-    </view>
+      <view wx:if="{{currentProductId}}">
+          <view class='bgCorF p20 mT10 f16'>
+              <textarea  bindblur="setDescription" auto-height maxlength='150' placeholder="{{currentProductName}}：信息可追溯，150字内描述..." />
+          </view>
+          <view class='bgCorF p20 bT1'>
+              <image wx:for="{{images}}" wx:key="*this" class="productPic" mode="aspectFill" src="{{item}}"></image>
+              <i wx:if="{{!images.length}}" class="icon iconfont icon-camerafill corC" style="font-size:60px;" bindtap="getProductImg"></i>
+          </view>
+      </view>
+      <view wx:else>
+          <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+            <view class='bgCorF p20 mT10 f16'>
+              请选择产品：{{multiArrayVal[2][multiIndexVal[2]]}}
+            </view>
+          </picker>
+          <view class='bgCorF p20 bT1'>
+              <image wx:for="{{images}}" wx:key="*this" class="productPic" mode="aspectFill" src="{{item}}"></image>
+              <i wx:if="{{!images.length}}" class="icon iconfont icon-camerafill corC" style="font-size:60px;" bindtap="getProductImg"></i>
+          </view>
+      </view>
 
+      <view class='flex1'></view>
+      
+      <view class='box bT1 bgCorF tc'>
+          <navigator delta='1' class='flex1 p15 br1' open-type="navigateBack">返回</navigator>
+          <view class='flex1 p15 corG' bindtap="saveProductID"><text>保存</text></view>
+      </view>
 
-    <view class='flex1'></view>
-    
-    <view class='box bT1 bgCorF tc'>
-        <navigator delta='1' class='flex1 p15 br1' open-type="navigateBack">返回</navigator>
-        <view class='flex1 p15 corG'><text>保存</text></view>
-    </view>
 </view>

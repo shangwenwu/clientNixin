@@ -1,12 +1,30 @@
-const formatTime = date => {
+const formatTime = (date,rule) => {
   const year = date.getFullYear()
+  if (rule == 'Y') {
+    return year;
+  }
   const month = date.getMonth() + 1
   const day = date.getDate()
   const hour = date.getHours()
   const minute = date.getMinutes()
   const second = date.getSeconds()
-
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+  if (rule == 'm/d') {
+    return [month, day].map(formatNumber).join('/');
+  }
+  if (rule == 'm-d') {
+    return [month, day].map(formatNumber).join('-');
+  }
+  if(rule == 'Y-m-d'){
+    return [year, month, day].map(formatNumber).join('-');
+  }else if (rule == 'Y-m-d H:m:s') {
+    return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':');
+  }else if (rule == 'Y/m/d') {
+    return [year, month, day].map(formatNumber).join('/');
+  }else if (rule == 'H:m:s') {
+    return [hour, minute, second].map(formatNumber).join(':');
+  } else {
+    return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':');
+  }
 }
 
 const formatNumber = n => {
@@ -34,7 +52,7 @@ var showModel = (title, content) => {
 
     wx.showModal({
         title,
-        content: JSON.stringify(content),
+        content: typeof content == 'string' ? content : JSON.stringify(content),
         showCancel: false
     })
 }

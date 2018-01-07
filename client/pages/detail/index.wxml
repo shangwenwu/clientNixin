@@ -14,79 +14,24 @@
         </view>
         <view class='bgCorF pL10 pR20 mT10 mB10 bT1'>
 
-            <view class='box'>
+            <view class='box' wx:for="{{dataLogs}}" wx:key="*this">
                 <view class='br1 pR10 box boxV pT15 pB15 treeTime'>
-                    <text class='f14'>11/29</text>
-                    <text class='itemVe f12'>2017</text>
+                    <text class='f14'>{{item.monthDay}}</text>
+                    <text class='itemVe f12'>{{item.year}}</text>
                     <view class='circle bgCorG'></view>
                 </view>
                 <view class='flex1 pT15 pB15 pL20 lH18 bB1Dashed'>
-                    <text class='f14 '>中华人民共和国中华人民共和国中华人民共和国中华人民共和国中华人民共和国中华人民共和国中华人民共和国中华人民共和国...</text>
+                    <text class='f14 '>{{item.description}}</text>
                     <view class='box mT5'>
-                        <image style="width: 30%; height: 50px;" class='mR2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                        <image style="width: 30%; height: 50px;" class='mR2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                        <image style="width: 30%; height: 50px;" class='mR2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                        <image wx:for="{{item.images}}" wx:key="*this" style="width: 30%; height: 50px;" class='mR2' mode="aspectFill" src="{{item}}"></image>
                     </view>
-                </view>
-            </view>
-
-            <view class='box'>
-                <view class='br1 pR10 box boxV pT15 pB15 treeTime'>
-                    <text class='f14'>11/29</text>
-                    <text class='itemVe f12'>2017</text>
-                    <view class='circle bgCorG'></view>
-                </view>
-                <view class='flex1 pT15 pB15 pL20 lH18 bB1Dashed'>
-                    <text class='f14 '>中华人民共和国中华人民共和国中华人民共和国中华人民共和国中华人民共和国中华人民共和国中华人民共和国中华人民共和国...</text>
-                    <view class='box mT5'>
-                        <image style="width: 30%; height: 50px;" class='mR2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                        <image style="width: 30%; height: 50px;" class='mR2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                        <image style="width: 30%; height: 50px;" class='mR2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                    </view>
-                </view>
-            </view>
-
-            <view class='box'>
-                <view class='br1 pR10 box boxV pT15 pB15 treeTime'>
-                    <text class='f14'>11/29</text>
-                    <text class='itemVe f12'>2017</text>
-                    <view class='circle bgCorG'></view>
-                </view>
-                <view class='flex1 pT15 pB15 pL20 lH18 bB1Dashed'>
-                    <view class='box mT5'>
-                        <image style="width: 30%; height: 50px;" class='mR2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                        <image style="width: 30%; height: 50px;" class='mR2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                        <image style="width: 30%; height: 50px;" class='mR2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                    </view>
-                </view>
-            </view>
-
-            <view class='box'>
-                <view class='br1 pR10 box boxV pT15 pB15 treeTime'>
-                    <text class='f14'>11/29</text>
-                    <text class='itemVe f12'>2017</text>
-                    <view class='circle bgCorG'></view>
-                </view>
-                <view class='flex1 pT15 pB15 pL20 lH18 bB1Dashed'>
-                    <text class='f14 '>浇地一水</text>
-                </view>
-            </view>
-
-            <view class='box'>
-                <view class='br1 pR10 box boxV pT15 pB15 treeTime'>
-                    <text class='f14'>11/29</text>
-                    <text class='itemVe f12'>2017</text>
-                    <view class='circle bgCorG'></view>
-                </view>
-                <view class='flex1 pT15 pB15 pL20 lH18 bB1Dashed'>
-                    <text class='f14'>今天添加了西红柿产品，开启可追溯信息化记录!</text>
                 </view>
             </view>
 
         </view>
     </scroll-view>
     <view class='box bT1 bgCorF tc'>
-        <view class='flex1 p15 br1'><text>返回</text></view>
+        <navigator delta='1' class='flex1 p15 br1' open-type="navigateBack">返回</navigator>
         <view class='flex1 p15 corG'><text>预售</text></view>
     </view>
 </view>

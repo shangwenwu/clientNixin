@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/addpro/index",
     "pages/team/index",
     "pages/productList/index",
     "pages/pickingList/index",
@@ -9,7 +10,6 @@
     "pages/memberList/index",
     "pages/setting/index",
     "pages/detail/index",
-    "pages/addpro/index",
     "pages/info/index",
     "pages/infoDetail/index"
   ],

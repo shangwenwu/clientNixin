@@ -1,18 +1,49 @@
 // pages/detail/index.js
-Page({
+let util = require('../../utils/util.js')
+let config = require('../../config');
 
+Page({
   /**
    * 页面的初始数据
    */
   data: {
-    proId:''
+    proId:'',
+    userId:'',
+    dataLogs:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({ proId: options.proId })
+    this.setData({ proId: options.proId, userId: options.userId })
+    this.getRowsInfo(options.userId, options.proId);
+  },
+  getRowsInfo: function (userId, id) {
+    let that = this;
+    wx.request({
+      url: config.service.queryUserOneProductList,
+      data: { product_id: id, supply_id: userId, desc:true },
+      method: 'post',
+      success(result) {
+        result.data.data.forEach(row=>{
+          row.monthDay = util.formatTime(new Date(row.create_time),'m/d');
+          row.year = util.formatTime(new Date(row.create_time), 'Y');
+          if (row.images){
+            row.images = row.images.split(',');
+          }else{
+            row.images = [];
+          }
+        });
+        console.log(result.data.data);
+        that.setData({
+          dataLogs: result.data.data
+        });
+      },
+      fail(error) {
+        util.showModel('消息', '行数据查找失败')
+      }
+    });
   },
 
   /**

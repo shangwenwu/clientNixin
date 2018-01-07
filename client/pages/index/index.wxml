@@ -20,117 +20,23 @@
               </view>
         </view>
     
-    <navigator url= "../detail/index?proId=12" class='bgCorF box p10 boxVc mB10'> 
-        <view class='hidden rowImg bgCor2 corF tc'><text>茄</text></view>
-        <text class='pL10 f16'>茄子</text>
+    
+    <navigator wx:for="{{productRows}}" wx:key="*this" url= "../detail/index?proId={{item.category_id}}&userId={{userId}}" class='bgCorF box p10 boxVc mB10'> 
+        <view class='hidden rowImg bgCor2 corF tc'>
+            <image class="productPic" mode="aspectFill" src="{{item.images}}"></image>
+        </view>
+        <text class='pL10 f16'>{{item.name}}</text>
         <view class='flex1'></view>
-        <text class='f12 corB'>120条记录</text>
+        <text class='f12 corB'>{{item.count}}条记录</text>
     </navigator>
 
-    <view class='bgCorF box p10 boxVc mB10'>
+    <!-- <view class='bgCorF box p10 boxVc mB10'>
         <view class='hidden rowImg bgCor2 corF tc'><image class="productPic" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image></view>
         <text class='pL10 f16'>茄子</text>
         <view class='flex1'></view>
         <text class='f12 corB'>120条记录</text>
-    </view>
+    </view> -->
 
-    <view class='bgCorF box p10 boxVc mB10'>
-        <view class='hidden rowImg bgCor2 corF tc'><text>茄</text></view>
-        <text class='pL10 f16'>茄子</text>
-        <view class='flex1'></view>
-        <text class='f12 corB'>120条记录</text>
-    </view>
-
-    <view class='bgCorF box p10 boxVc mB10'>
-        <view class='hidden rowImg bgCor2 corF tc'><image class="productPic" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image></view>
-        <text class='pL10 f16'>茄子</text>
-        <view class='flex1'></view>
-        <text class='f12 corB'>120条记录</text>
-    </view>
-
-    <view class='bgCorF box p10 boxVc mB10'>
-        <view class='hidden rowImg bgCor2 corF tc'><text>茄</text></view>
-        <text class='pL10 f16'>茄子</text>
-        <view class='flex1'></view>
-        <text class='f12 corB'>120条记录</text>
-    </view>
-
-    <view class='bgCorF box p10 boxVc mB10'>
-        <view class='hidden rowImg bgCor2 corF tc'><image class="productPic" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image></view>
-        <text class='pL10 f16'>茄子</text>
-        <view class='flex1'></view>
-        <text class='f12 corB'>120条记录</text>
-    </view>
-
-    <view class='bgCorF box p10 boxVc mB10'>
-        <view class='hidden rowImg bgCor2 corF tc'><text>茄</text></view>
-        <text class='pL10 f16'>茄子</text>
-        <view class='flex1'></view>
-        <text class='f12 corB'>120条记录</text>
-    </view>
-
-    <view class='bgCorF box p10 boxVc mB10'>
-        <view class='hidden rowImg bgCor2 corF tc'><image class="productPic" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image></view>
-        <text class='pL10 f16'>茄子</text>
-        <view class='flex1'></view>
-        <text class='f12 corB'>120条记录</text>
-    </view>
-
-    <view class='bgCorF box p10 boxVc mB10'>
-        <view class='hidden rowImg bgCor2 corF tc'><text>茄</text></view>
-        <text class='pL10 f16'>茄子</text>
-        <view class='flex1'></view>
-        <text class='f12 corB'>120条记录</text>
-    </view>
-
-    <view class='bgCorF box p10 boxVc mB10'>
-        <view class='hidden rowImg bgCor2 corF tc'><image class="productPic" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image></view>
-        <text class='pL10 f16'>茄子</text>
-        <view class='flex1'></view>
-        <text class='f12 corB'>120条记录</text>
-    </view>
-
-    <view class='bgCorF box p10 boxVc mB10'>
-        <view class='hidden rowImg bgCor2 corF tc'><text>茄</text></view>
-        <text class='pL10 f16'>茄子</text>
-        <view class='flex1'></view>
-        <text class='f12 corB'>120条记录</text>
-    </view>
-
-    <view class='bgCorF box p10 boxVc mB10'>
-        <view class='hidden rowImg bgCor2 corF tc'><image class="productPic" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image></view>
-        <text class='pL10 f16'>茄子</text>
-        <view class='flex1'></view>
-        <text class='f12 corB'>120条记录</text>
-    </view>
-
-    <view class='bgCorF box p10 boxVc mB10'>
-        <view class='hidden rowImg bgCor2 corF tc'><text>茄</text></view>
-        <text class='pL10 f16'>茄子</text>
-        <view class='flex1'></view>
-        <text class='f12 corB'>120条记录</text>
-    </view>
-
-    <view class='bgCorF box p10 boxVc mB10'>
-        <view class='hidden rowImg bgCor2 corF tc'><image class="productPic" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image></view>
-        <text class='pL10 f16'>茄子</text>
-        <view class='flex1'></view>
-        <text class='f12 corB'>120条记录</text>
-    </view>
-
-    <view class='bgCorF box p10 boxVc mB10'>
-        <view class='hidden rowImg bgCor2 corF tc'><text>茄</text></view>
-        <text class='pL10 f16'>茄子</text>
-        <view class='flex1'></view>
-        <text class='f12 corB'>120条记录</text>
-    </view>
-
-    <view class='bgCorF box p10 boxVc mB10'>
-        <view class='hidden rowImg bgCor2 corF tc'><image class="productPic" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image></view>
-        <text class='pL10 f16'>茄子</text>
-        <view class='flex1'></view>
-        <text class='f12 corB'>120条记录</text>
-    </view>
 
     <view class='bgCorF box p10 boxVc mB10'>
         <view class='hidden rowImg bgCor2 corF tc'><text>例</text></view>

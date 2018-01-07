@@ -1,1 +1,1 @@
-/* pages/addpro/index.wxss */
+.productPic{ width:50px; height: 50px; margin-right:2px; border-radius: 5px; }
