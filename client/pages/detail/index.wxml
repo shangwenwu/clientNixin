@@ -5,18 +5,19 @@
             <image style=" width:90px; height:52px;" src="../../images/logo.png"></image>
             <text class='mT10 corF f14'>来 自 田 地 的 一 封 信 ！</text>
         </view>
-        <view class='bgCorF box boxV f14 cor6 lH18 pT10 pB10 pL20 pR20'>
-          <text>名称：西红柿</text>
-          <text>供应商：张三</text>
-          <text>产地：河北省邯郸市临漳县孙陶镇商村二队</text>
-          <text>团队：农业蔬菜种植直供突击队</text>
-          <text>经营：西红柿、土豆、青椒、胡萝卜...</text>
+        <view class='bgCorF box f14 cor6 lH18 pT10 pB10 pL20 pR20'>
+          <image class="userPic" mode="aspectFill" src="{{userInfo.photo}}"></image>
+          <view class='flex1'>
+              <view>名称：{{userInfo.productName}}</view>
+              <view>产地：{{userInfo.address}}</view>
+              <view>农户：{{userInfo.name||userInfo.nick_name}}</view>
+          </view>
         </view>
         <view class='bgCorF pL10 pR20 mT10 mB10 bT1'>
 
             <view class='box' wx:for="{{dataLogs}}" wx:key="*this">
                 <view class='br1 pR10 box boxV pT15 pB15 treeTime'>
-                    <text class='f14'>{{item.monthDay}}</text>
+                    <text class='f14 fb'>{{item.monthDay}}</text>
                     <text class='itemVe f12'>{{item.year}}</text>
                     <view class='circle bgCorG'></view>
                 </view>

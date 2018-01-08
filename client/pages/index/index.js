@@ -99,7 +99,7 @@ Page({
    */
   findUserName: function (nickName, params, that){
     wx.request({
-      url: config.service.findUserName,
+      url: config.service.findUserInfo,
       data: { nick_name: nickName},
       method: 'post',
       success(result) {

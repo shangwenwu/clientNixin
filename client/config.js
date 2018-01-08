@@ -13,7 +13,7 @@ var config = {
 
         saveUserInfo: `${host}/saveUserInfo`,
         // saveProduct: `${host}/saveProduct`,
-        findUserName: `${host}/findUserName`,
+        findUserInfo: `${host}/findUserName`,
         addProductId: `${host}/addProductId`,
 
         insertTraceInfo: `${host}/insertTraceInfo`,
