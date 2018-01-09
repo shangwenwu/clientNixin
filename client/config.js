@@ -19,6 +19,15 @@ var config = {
         insertTraceInfo: `${host}/insertTraceInfo`,
         queryUserOneProductList: `${host}/queryUserOneProductList`,
 
+
+        //保存 预计销售产品
+        insertSalesInfo: `${host}/insertSalesInfo`,
+        //删除 预计销售产品
+        deleteSalesInfo: `${host}/deleteSalesInfo`,
+        //查询 预计销售产品
+        querySalesInfo: `${host}/querySalesInfo`,
+
+
         // 登录地址，用于建立会话
         loginUrl: `${host}/weapp/login`,
 

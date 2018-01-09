@@ -11,7 +11,11 @@ Page({
     proId:'',
     userId:'',
     dataLogs:[],
-    userInfo:{}
+    userInfo:{},
+    dialogCover:false,
+    price:'200元/斤',
+    weight:'',
+    salesStatus:false
   },
 
   /**
@@ -72,6 +76,78 @@ Page({
       let pro = product_id.split(',');
       return category[2][pro[0]][pro[1]][pro[2]];
   },
+  //点击预售按钮触发
+  changeDialogCover:function(){
+    this.setData({
+      dialogCover: !this.data.dialogCover
+    });
+  },
+  deleteSalesInfo : function(){
+    let that = this;
+    let params = {
+      product_id: this.data.proId,
+      supply_id: this.data.userId
+    };
+    wx.request({
+      url: config.service.deleteSalesInfo,
+      data: params,
+      method: 'post',
+      success(result) {
+        console.log(result);
+        if (result.data.data.affectedRows) {
+          that.changeDialogCover();
+          that.changeSalesStatus();
+        };
+      },
+      fail(error) {
+        util.showModel('消息', '产品预售信息删除失败！')
+      }
+    });
+  },
+  insertSalesInfo:function(){
+    let that = this;
+    if (this.data.salesStatus) { //销售中时 触发 结束销售
+      this.deleteSalesInfo();
+      return;
+    }
+    if (!this.data.weight || !this.data.price){
+      util.showModel('消息', '请输入预计出售斤秤！');
+      return;
+    }
+    let params = {
+      product_id: this.data.proId,
+      supply_id: this.data.userId,
+      weight:this.data.weight,
+      price:this.data.price
+    };
+    wx.request({
+      url: config.service.insertSalesInfo,
+      data: params,
+      method: 'post',
+      success(result) {
+        if(result.data.data.affectedRows){
+          that.changeDialogCover();
+          that.changeSalesStatus();
+        };
+      },
+      fail(error) {
+        util.showModel('消息', '用户信息查找失败！')
+      }
+    });
+  }, 
+  //获取 预计出售斤秤
+  changeWeight:function(event){
+    console.log(event);
+    this.setData({
+      weight: event.detail.value
+    });
+  },
+  //预售状态
+  changeSalesStatus: function () {
+    this.setData({
+      salesStatus: !this.data.salesStatus
+    });
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -84,7 +160,25 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+      //先查找当前产品是否为预售中
+      let that = this;
+      let params = {
+        product_id: this.data.proId,
+        supply_id: this.data.userId
+      };
+      wx.request({
+        url: config.service.querySalesInfo,
+        data: params,
+        method: 'post',
+        success(result) {
+          if (result.data.data.length){
+            that.changeSalesStatus();
+          }
+        },
+        fail(error) {
+          util.showModel('消息', '产品是否为预售中，查寻失败！')
+        }
+      });
   },
 
   /**

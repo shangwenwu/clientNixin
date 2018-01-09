@@ -3,3 +3,9 @@
 .treeTime .circle{ position: absolute; top:30px; right: -3px; width: 5px; height: 5px; border-radius:2.5px;}
 
 .userPic{ width: 50px; height: 50px; border-radius: 3px; margin-right:10px;}
+
+
+/*dialog*/
+.dialogCover{ position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: #000; opacity:.2;}
+.dialog{position: fixed; top: 0; left: 0; right: 0; bottom: 0;}
+.dialogCon{ width: 80%; margin:35% auto auto;  background-color: #fff; border-radius: 5px;opacity:1;}
