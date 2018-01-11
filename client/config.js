@@ -28,6 +28,16 @@ var config = {
         querySalesInfo: `${host}/querySalesInfo`,
 
 
+        //保存 采摘信息
+        insertPickingInfo: `${host}/insertPickingInfo`,
+        //删除 采摘信息
+        deletePickingInfo: `${host}/deletePickingInfo`,
+        //查询 采摘信息
+        queryPickingInfo: `${host}/queryPickingInfo`,
+
+
+
+
         // 登录地址，用于建立会话
         loginUrl: `${host}/weapp/login`,
 

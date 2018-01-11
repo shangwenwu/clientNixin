@@ -19,11 +19,11 @@
         <view data-state="5" class='flex1 cursor tc pT10 pB10 {{tabState==5?"bBActive corG":"bB2 corA"}}' bindtap="changeState"><text>团队成员</text></view>
     </view>
 
-      <view wx:if="{{tabState == 1}}">
-            <template is="productList" />
+      <view wx:if="{{tabState == 1 && productListData.length}}">
+            <template is="productList" data="{{productListData:productListData}}"/>
       </view>
       <view wx:if="{{tabState == 2}}">
-          <template is="pickingList" />
+          <template is="pickingList" data="{{pickingInfo:pickingInfo,canCreate:canCreate}}"/>
       </view>
       <view wx:if="{{tabState == 3}}">
           <template is="landList" />

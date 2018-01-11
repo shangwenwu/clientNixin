@@ -13,6 +13,33 @@
 
 <template name="pickingList">
 
+
+          <!-- 当前用户的 -->
+          <view wx:if="canCreate.length">
+              <view wx:for="{{canCreate}}" wx:key="*this">{{item.category_id}} {{item.name}}</view>
+              <view>您还没有创建采摘信息</view>
+              <button type="primary" bindtap=""> 创建采摘活动 </button>
+          </view>
+
+
+          <view wx:for="{{pickingInfo}}"  wx:key="*this"  class='box bgCorF p10 pL20 pR20 boxVc'>
+              <view class='box boxV boxVc pR20'>
+                  <image class='mR2 mT2 picUser' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                  <text class='fb f14 mT5'>08:00-10:00</text>
+                  <text class='f14'>第一天{{index}}</text>
+              </view>
+              <view class='flex1 box boxV f14'>
+                  <text class='corG f16'>采摘草莓1234</text>
+                  <text class='f12 cor6'>采摘信息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述采摘信息描述采摘信息描述</text>
+                  <view class='box'>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                  </view>
+              </view>
+          </view>
+
+
     
           <!-- <view class='bgCorF p10 pL20 pR20 box mB10 box f14 boxV'>
               <view class='box boxVc bB1 pL10 pR10 pB5 mB10'>

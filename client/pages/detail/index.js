@@ -26,6 +26,10 @@ Page({
     this.getRowsInfo(options.userId, options.proId);
     this.getUserInfo(options.userId, options.proId);
   },
+  /**
+   * 获取 产品追溯信息时间骤详情信息
+   * 参数 用户id 产品id
+   */
   getRowsInfo: function (userId, id) {
     let that = this;
     wx.request({
@@ -42,7 +46,6 @@ Page({
             row.images = [];
           }
         });
-        console.log(result.data.data);
         that.setData({
           dataLogs: result.data.data
         });
@@ -64,7 +67,6 @@ Page({
         that.setData({
           userInfo:data
         });
-        console.log(data);
       },
       fail(error) {
         util.showModel('消息', '用户信息查找失败！')
@@ -82,6 +84,9 @@ Page({
       dialogCover: !this.data.dialogCover
     });
   },
+  /**
+   * 删除预售信息 结束销售
+   */
   deleteSalesInfo : function(){
     let that = this;
     let params = {
@@ -93,7 +98,6 @@ Page({
       data: params,
       method: 'post',
       success(result) {
-        console.log(result);
         if (result.data.data.affectedRows) {
           that.changeDialogCover();
           that.changeSalesStatus();
@@ -104,6 +108,9 @@ Page({
       }
     });
   },
+  /**
+   * 增加预售信息 开始销售
+   */
   insertSalesInfo:function(){
     let that = this;
     if (this.data.salesStatus) { //销售中时 触发 结束销售
@@ -137,12 +144,11 @@ Page({
   }, 
   //获取 预计出售斤秤
   changeWeight:function(event){
-    console.log(event);
     this.setData({
       weight: event.detail.value
     });
   },
-  //预售状态
+  //改变预售状态
   changeSalesStatus: function () {
     this.setData({
       salesStatus: !this.data.salesStatus
@@ -152,9 +158,7 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  
-  },
+  onReady: function () { },
 
   /**
    * 生命周期函数--监听页面显示

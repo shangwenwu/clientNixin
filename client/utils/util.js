@@ -1,3 +1,22 @@
+let config = require('../config')
+let category = config.category;
+
+//根据产品ID列表 得到当前对应的产品名称
+const getCurrentCategory = function (product_id, userId, callback) {
+  if (!product_id) return [];
+  let categoryList = [];
+  product_id.split('-').forEach(ids => {
+    callback && callback(userId, ids);
+    let pro = ids.split(',');
+    categoryList.push({
+      category_id: ids,
+      name: category[2][pro[0]][pro[1]][pro[2]]
+    });
+  });
+  return categoryList;
+}
+
+
 const formatTime = (date,rule) => {
   const year = date.getFullYear()
   if (rule == 'Y') {
@@ -57,4 +76,4 @@ var showModel = (title, content) => {
     })
 }
 
-module.exports = { formatTime, showBusy, showSuccess, showModel }
+module.exports = { formatTime, showBusy, showSuccess, showModel, getCurrentCategory }

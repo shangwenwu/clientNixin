@@ -5,13 +5,13 @@ var productData = [
     flag: false,
     member: {
       name: '王五',
-      photo: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1946928627,855910382&fm=27&gp=0.jpg',
+      photo: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1946928627,855910382&fm=27&gp=011.jpg',
       userId: 9
     }
   }, {
     name: '土豆',
     sales: '100斤',
-    flag: true,
+    flag: false,
     member: {
       name: '攀岩人',
       photo: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=866999120,2686226874&fm=27&gp=0.jpg',

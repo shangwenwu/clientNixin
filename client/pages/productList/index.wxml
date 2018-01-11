@@ -1,154 +1,20 @@
 <!--pages/productList/index.wxml-->
 
-<template name="row">
-  {{a1}}
-  {{b}}
-</template>
-
-<template name="productList111">
-    <text>pages/productList/index.wxml</text>
-    <view><text>productList 团队产品</text></view>
-    <template is="row" data="{{a1:a,b:b}}" />
-</template>
 
 <template name="productList">
 
-    <view class='bgCorF pL5 pR5 box mB10'>
-              <view class='flex1 mT10 mB10 mR5 mL5 box boxV'>
-                  <image class="proPic" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                  <view class='box mT2 boxVc boxHc'>
-                      <image class='whr30' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                      <view class='flex1 mL2 box boxV lH15'>
-                          <text class='f12'>土豆土豆豆</text>
-                          <text class='fb f12 corR'>￥2.5</text>
+                 
+                 <navigator wx:for="{{productListData}}" wx:key="*this" url= "../detail/index?proId={{item.category_id}}&userId={{item.userId}}" class='mB10 box boxV bgCorF' style="width:30%;  float:left; padding-left:1.65%; padding-right:1.65%; padding-top:10px; padding-bottom:10px;">
+                      <image class="proPic" mode="aspectFill" src="{{item.images}}"></image>
+                      <view class='box mT2 boxVc boxHc'>
+                          <image class='whr30' mode="aspectFill" src="{{item.photo}}"></image>
+                          <view class='flex1 mL2 box boxV lH15'>
+                              <text class='f12'>{{item.name}} {{item.count}}条</text>
+                              <text class='fb f12 corR'>{{item.price}}</text>
+                          </view>
                       </view>
-                  </view>
-              </view>
-              <view class='flex1 mT10 mB10 mR5 mL5 box boxV'>
-                  <image class="proPic" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                  <view class='box mT2 boxVc boxHc'>
-                      <image class='whr30' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                      <view class='flex1 mL2 box boxV lH15'>
-                          <text class='f12'>土豆土豆豆</text>
-                          <text class='fb f12 corR'>生长期...</text>
-                      </view>
-                  </view>
-              </view>
-              <view class='flex1 mT10 mB10 mR5 mL5 box boxV'>
-                  <image class="proPic" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                  <view class='box mT2 boxVc boxHc'>
-                      <image class='whr30' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                      <view class='flex1 mL2 box boxV lH15'>
-                          <text class='f12'>土豆土豆豆</text>
-                          <text class='fb f12 corR'>￥2.5</text>
-                      </view>
-                  </view>
-              </view>
-          </view>
-
-
-
-          <view class='bgCorF pL5 pR5 box mB10'>
-              <view class='flex1 mT10 mB10 mR5 mL5 box boxV'>
-                  <image class="proPic" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                  <view class='box mT2 boxVc boxHc'>
-                      <image class='whr30' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                      <view class='flex1 mL2 box boxV lH15'>
-                          <text class='f12'>土豆土豆豆</text>
-                          <text class='fb f12 corR'>￥2.5</text>
-                      </view>
-                  </view>
-              </view>
-              <view class='flex1 mT10 mB10 mR5 mL5 box boxV'>
-                  <image class="proPic" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                  <view class='box mT2 boxVc boxHc'>
-                      <image class='whr30' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                      <view class='flex1 mL2 box boxV lH15'>
-                          <text class='f12'>土豆土豆豆</text>
-                          <text class='fb f12 corR'>￥2.5</text>
-                      </view>
-                  </view>
-              </view>
-              <view class='flex1 mT10 mB10 mR5 mL5 box boxV'>
-                  <image class="proPic" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                  <view class='box mT2 boxVc boxHc'>
-                      <image class='whr30' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                      <view class='flex1 mL2 box boxV lH15'>
-                          <text class='f12'>土豆土豆豆</text>
-                          <text class='fb f12 corR'>￥2.5</text>
-                      </view>
-                  </view>
-              </view>
-          </view>
-
-
-
-          <view class='bgCorF pL5 pR5 box mB10'>
-              <view class='flex1 mT10 mB10 mR5 mL5 box boxV'>
-                  <image class="proPic" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                  <view class='box mT2 boxVc boxHc'>
-                      <image class='whr30' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                      <view class='flex1 mL2 box boxV lH15'>
-                          <text class='f12'>土豆土豆豆</text>
-                          <text class='fb f12 corR'>￥2.5</text>
-                      </view>
-                  </view>
-              </view>
-              <view class='flex1 mT10 mB10 mR5 mL5 box boxV'>
-                  <image class="proPic" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                  <view class='box mT2 boxVc boxHc'>
-                      <image class='whr30' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                      <view class='flex1 mL2 box boxV lH15'>
-                          <text class='f12'>土豆土豆豆</text>
-                          <text class='fb f12 corR'>￥2.5</text>
-                      </view>
-                  </view>
-              </view>
-              <view class='flex1 mT10 mB10 mR5 mL5 box boxV'>
-                  <image class="proPic" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                  <view class='box mT2 boxVc boxHc'>
-                      <image class='whr30' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                      <view class='flex1 mL2 box boxV lH15'>
-                          <text class='f12'>土豆土豆豆</text>
-                          <text class='fb f12 corR'>￥2.5</text>
-                      </view>
-                  </view>
-              </view>
-          </view>
-
-
-          <view class='bgCorF pL5 pR5 box mB10'>
-              <view class='flex1 mT10 mB10 mR5 mL5 box boxV'>
-                  <image class="proPic" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                  <view class='box mT2 boxVc boxHc'>
-                      <image class='whr30' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                      <view class='flex1 mL2 box boxV lH15'>
-                          <text class='f12'>土豆土豆豆</text>
-                          <text class='fb f12 corR'>￥2.5</text>
-                      </view>
-                  </view>
-              </view>
-              <view class='flex1 mT10 mB10 mR5 mL5 box boxV'>
-                  <image class="proPic" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                  <view class='box mT2 boxVc boxHc'>
-                      <image class='whr30' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                      <view class='flex1 mL2 box boxV lH15'>
-                          <text class='f12'>土豆土豆豆</text>
-                          <text class='fb f12 corR'>￥2.5</text>
-                      </view>
-                  </view>
-              </view>
-              <view class='flex1 mT10 mB10 mR5 mL5 box boxV'>
-                  <image class="proPic" mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                  <view class='box mT2 boxVc boxHc'>
-                      <image class='whr30' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                      <view class='flex1 mL2 box boxV lH15'>
-                          <text class='f12'>土豆土豆豆</text>
-                          <text class='fb f12 corR'>￥2.5</text>
-                      </view>
-                  </view>
-              </view>
-          </view>
+                  </navigator>
+                  
 
 
 </template>

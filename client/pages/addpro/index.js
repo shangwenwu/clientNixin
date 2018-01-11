@@ -35,7 +35,8 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    if (options.product_id){
+    debugger;
+    if (options.product_id && options.product_id != 'null'){
         let tempArr = this.getCurrentCategory(options.product_id);
         this.setData({
           userId:options.userId,
