@@ -59,8 +59,8 @@
             泥信：为了农民的利益最大化而努力！
           </view>
           <view class='mT20 box p5 pB10'>
-            <button class='flex1 mR5' type="default" bindtap="changeDialogCover"> 取消 </button>
-            <button class='flex1 mL5' type="primary" bindtap="insertSalesInfo"> 确定 </button>
+            <button class='flex1 mR5' type="default" size="mini" bindtap="changeDialogCover"> 取消 </button>
+            <button class='flex1 mL5' type="primary" size="mini" bindtap="insertSalesInfo"> 确定 </button>
           </view>
       </view>
     </view>

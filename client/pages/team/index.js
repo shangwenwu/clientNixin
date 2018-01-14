@@ -19,8 +19,18 @@ Page({
 
       productListData:[],//团队产品列表
 
-      pickingInfo:[],//采摘信息
-      canCreate:[] //可以创建采摘的产品
+
+      pickingState:{
+        pickingInfo: [],
+        canCreate: [],
+        canCreateName: [],
+        canCreateNameIndex: 0,
+        dialogCover: false,
+        pickingData: {
+          pickingimages:[]
+        },
+      },
+
       
       
 
@@ -168,8 +178,13 @@ Page({
   queryPickingInfo: function () {
     let that = this;
     let ids = this.data.userInfo.product_id.split('-');
+    let arr = util.getCurrentCategory(this.data.userInfo.product_id);
+    let canCreateName = [];
+    arr.forEach(item=>{
+      canCreateName.push(item.name);
+    });
     that.setData({
-      canCreate: util.getCurrentCategory(this.data.userInfo.product_id)
+      pickingState: Object.assign({ canCreate: arr, canCreateName: canCreateName})
     });
     wx.request({
       url: config.service.queryPickingInfo,
@@ -178,16 +193,16 @@ Page({
       success(result) {
         let data = result.data.data;
         if(data.length){
+          let pickingInfo = [];
           data.map(function(item){
-            that.data.pickingInfo.push(item)
+            pickingInfo.push(item)
             let i = ids.indexOf(item.product_id);
             if(i != -1){
                 ids.splice(i,1);
             };
           });
           that.setData({
-            pickingInfo: that.data.pickingInfo,
-            canCreate: util.getCurrentCategory(ids.toString().replace(/,/g, '-'))
+            pickingState: Object.assign(this.data.pickingState, { pickingInfo: pickingInfo, canCreate: util.getCurrentCategory(ids.toString().replace(/,/g, '-'))}),
           });
         }
       },
@@ -197,6 +212,48 @@ Page({
     });
     //根据teamID 查找团队的其它成员的采摘信息
     //this.data.userInfo.team_id
+  },
+  
+  //点击创建采摘活动按钮触发
+  changeDialogCover: function () {
+    this.setData({
+      pickingState: Object.assign(this.data.pickingState, { dialogCover: !this.data.dialogCover })
+    });
+  },
+  //保存采摘信息 
+  savePickingData(event) {
+      var temp = {};
+      if (event.currentTarget.dataset.attr == 'product_id'){
+        temp[event.currentTarget.dataset.attr] = this.data.pickingState.canCreate[event.detail.value].category_id;
+        this.data.pickingState.canCreateNameIndex = event.detail.value;
+      }else{
+        temp[event.currentTarget.dataset.attr] = event.detail.value;
+      }
+      this.setData({
+        pickingState: Object.assign(this.data.pickingState, { canCreateNameIndex: this.data.pickingState.canCreateNameIndex, pickingData: temp })
+      })
+      console.log(this.data.pickingState.pickingData);
+  },
+  /**
+   * 选择产品图片
+   */
+  getPickingImg: function (event) {
+    var that = this;
+    wx.chooseImage({
+      count: 9, // 默认9
+      sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        debugger
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+    
+        that.data.pickingState.pickingData.pickingimages = res.tempFilePaths
+        debugger;
+        that.setData({
+          pickingState: that.data.pickingState.pickingData
+        });
+      }
+    })
   },
 
   

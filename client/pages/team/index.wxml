@@ -23,7 +23,7 @@
             <template is="productList" data="{{productListData:productListData}}"/>
       </view>
       <view wx:if="{{tabState == 2}}">
-          <template is="pickingList" data="{{pickingInfo:pickingInfo,canCreate:canCreate}}"/>
+          <template is="pickingList" data="{{pickingState:pickingState,changeDialogCover:changeDialogCover, savePickingData:savePickingData, getPickingImg:getPickingImg}}"/>
       </view>
       <view wx:if="{{tabState == 3}}">
           <template is="landList" />
