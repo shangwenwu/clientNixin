@@ -26,9 +26,7 @@ Page({
         canCreateName: [],
         canCreateNameIndex: 0,
         dialogCover: false,
-        pickingData: {
-          pickingimages:[]
-        },
+        pickingData: {},
       },
 
       
@@ -154,7 +152,6 @@ Page({
             that.setData({
               productListData: that.data.productListData
             });
-            console.log(item);
             return true;
           }
         });
@@ -171,7 +168,31 @@ Page({
   
 
   //保存 采摘信息
-  insertPickingInfo:function(){},
+  insertPickingInfo:function(data){
+    let that = this;
+    data.images = data.pickingimages.toString();
+    delete data.pickingimages;
+    wx.request({
+      url: config.service.insertPickingInfo,
+      data: that.data.pickingState.pickingData,
+      method: 'post',
+      success(result) {
+        if (result.data.data.insertId){
+            that.setData({
+              pickingState: Object.assign(that.data.pickingState, { pickingData: {} }),
+            })
+            that.queryPickingInfo();
+            that.changeDialogCover();
+        }
+      },
+      fail(error) {
+        util.showModel('消息', '增加采摘接口错误！')
+      }
+    });
+
+    
+
+  },
   //删除 采摘信息
   deletePickingInfo: function () { },
   //查询 采摘信息
@@ -183,15 +204,18 @@ Page({
     arr.forEach(item=>{
       canCreateName.push(item.name);
     });
+
     that.setData({
-      pickingState: Object.assign({ canCreate: arr, canCreateName: canCreateName})
+      pickingState: Object.assign(this.data.pickingState, { canCreate: arr, canCreateName: canCreateName, pickingData:Object.assign(this.data.pickingState.pickingData, { product_id: arr[0].category_id })})
     });
+
     wx.request({
       url: config.service.queryPickingInfo,
-      data: { supply_id:this.data.userInfo.id},
+      data: { supply_id: this.data.userInfo.id, product_id:'0,3,0'},
       method: 'post',
       success(result) {
         let data = result.data.data;
+
         if(data.length){
           let pickingInfo = [];
           data.map(function(item){
@@ -201,10 +225,29 @@ Page({
                 ids.splice(i,1);
             };
           });
-          that.setData({
-            pickingState: Object.assign(this.data.pickingState, { pickingInfo: pickingInfo, canCreate: util.getCurrentCategory(ids.toString().replace(/,/g, '-'))}),
+
+          if(ids.length > 1){
+              var str = '';
+              ids.map((row,index)=>{
+                str += index ? ('-'+row) : row;
+              });
+              ids = str;
+          }else{
+            ids = ids[0];
+          }
+
+          let arr = util.getCurrentCategory(ids);
+          let canCreateName = [];
+          arr.forEach(item => {
+            canCreateName.push(item.name);
           });
+          that.setData({
+            pickingState: Object.assign(that.data.pickingState, { pickingInfo: pickingInfo, canCreate: arr, canCreateName: canCreateName, pickingData: Object.assign(that.data.pickingState.pickingData, { product_id: arr.length ? arr[0].category_id : '' })}),
+          });
+
         }
+
+        console.log(that.data.pickingState);
       },
       fail(error) {
         util.showModel('消息', '查询采摘接口错误！')
@@ -217,22 +260,23 @@ Page({
   //点击创建采摘活动按钮触发
   changeDialogCover: function () {
     this.setData({
-      pickingState: Object.assign(this.data.pickingState, { dialogCover: !this.data.dialogCover })
+      pickingState: Object.assign(this.data.pickingState, { dialogCover: !this.data.pickingState.dialogCover })
     });
   },
   //保存采摘信息 
   savePickingData(event) {
       var temp = {};
       if (event.currentTarget.dataset.attr == 'product_id'){
-        temp[event.currentTarget.dataset.attr] = this.data.pickingState.canCreate[event.detail.value].category_id;
+        this.data.pickingState.pickingData[event.currentTarget.dataset.attr] = this.data.pickingState.canCreate[event.detail.value].category_id;
         this.data.pickingState.canCreateNameIndex = event.detail.value;
       }else{
-        temp[event.currentTarget.dataset.attr] = event.detail.value;
+        this.data.pickingState.pickingData[event.currentTarget.dataset.attr] = event.detail.value;
       }
+      
       this.setData({
-        pickingState: Object.assign(this.data.pickingState, { canCreateNameIndex: this.data.pickingState.canCreateNameIndex, pickingData: temp })
+        pickingState: Object.assign(this.data.pickingState, { canCreateNameIndex: this.data.pickingState.canCreateNameIndex, pickingData: this.data.pickingState.pickingData })
       })
-      console.log(this.data.pickingState.pickingData);
+      
   },
   /**
    * 选择产品图片
@@ -244,16 +288,23 @@ Page({
       sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
-        debugger
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-    
         that.data.pickingState.pickingData.pickingimages = res.tempFilePaths
-        debugger;
         that.setData({
-          pickingState: that.data.pickingState.pickingData
+          pickingState: that.data.pickingState
         });
       }
     })
+  },
+  //保存产品预售信息
+  savePicking:function(){
+    var data = this.data.pickingState.pickingData;
+    data.supply_id = this.data.userInfo.id;
+    if (data.description && data.pickingimages && data.product_id && data.title){
+      this.insertPickingInfo(data);
+    }else{
+      util.showModel('消息', '信息不完整！')
+    }
   },
 
   
@@ -417,7 +468,6 @@ Page({
     var backVal = this.data.showPorduct;
     (!!showPorduct != this.data.showPorduct) && this.setData({ showPorduct: !!showPorduct });
 
-    console.log(val, 88888);
     if (typeof val == 'string') {
       if (val == 'back') {
         if (!backVal) {
@@ -425,7 +475,6 @@ Page({
           this.setData({
             community: Object.assign(this.data.community, { current: arr })
           })
-          console.log('aaaaaaaaaa');
           this.getCurrentPosition();
         }
       } else {
@@ -439,24 +488,20 @@ Page({
         this.setData({
           community: Object.assign(this.data.community, { current: this.data.community.current })
         })
-        console.log('ooooooooooooooo');
         this.getCurrentPosition();
       }
     } else if (typeof val == 'number') {
       this.setData({
         community: Object.assign(this.data.community, { current: [val, 0] })
       });
-      console.log('ggggggggggggggggg');
       this.getCurrentPosition();
     }
   },
 
   showPro() {
-    console.log(this.data.community.current);
   },
 
   finishPro() {
-    console.log('666666666666');
     this.getCurrentPosition(true);
   },
 

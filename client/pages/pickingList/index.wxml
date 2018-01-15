@@ -12,7 +12,7 @@
 
                         <view class='bgCorF f16 p10 pL20 pR20 bT1 bB1  box boxVc'>
                             <view class='cor9'>名称</view>
-                            <input class='tr flex1' placeholder="请输入采摘活动名称" value="{{pickingState.pickingData.title ? pickingState.pickingData.title : ''}}" bindblur="savePickingData" data-attr="title"/>
+                            <input class='tr flex1' placeholder="请输入采摘活动名称"  bindblur="savePickingData" data-attr="title"/>
                         </view>
 
                         <view class='bgCorF f16 p10 pL20 pR20 bT1 bB1  box boxVc'>
@@ -45,15 +45,15 @@
                     </view>
                     <view class='mT20 box p5 pB10'>
                       <button class='flex1 mR5' type="default" bindtap="changeDialogCover"> 取消 </button>
-                      <button class='flex1 mL5' type="primary" > 确定 </button>
+                      <button class='flex1 mL5' type="primary" bindtap="savePicking"> 确定 </button>
                     </view>
                 </view>
               </view>
               
-              <view class="f14 bgCorF p10 box boxV boxVc mB10">
+              <view class="f14 bgCorF p10 box boxV boxVc mB10" wx:if="{{pickingState.canCreate.length}}">
                 <view class='lH25 tc corB'>
                     <view>这些产品可以创建采摘活动</view>
-                    <text wx:for="{{canCreate}}" wx:key="*this" >{{index ? ',' : ''}}{{item.name}}</text>
+                    <text wx:for="{{pickingState.canCreate}}" wx:key="*this" >{{index ? ',' : ''}}{{item.name}}</text>
                 </view>
                 <button type="primary" class='mT5 mB5' bindtap="" size="mini" bindtap="changeDialogCover"> 创建采摘活动 </button>
               </view>
@@ -61,7 +61,7 @@
           </view>
 
 
-          <view wx:for="{{pickingInfo}}"  wx:key="*this"  class='box bgCorF p10 pL20 pR20 boxVc'>
+          <view wx:for="{{pickingState.pickingInfo}}"  wx:key="*this"  class='box bgCorF p10 pL20 pR20 boxVc'>
               <view class='box boxV boxVc pR20'>
                   <image class='mR2 mT2 picUser' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
                   <text class='fb f14 mT5'>08:00-10:00</text>
@@ -98,7 +98,19 @@
               <text class='corG'>所有成员全部发布旅游采摘信息后，才可以对消费者游客进行公布。</text>
           </view> -->
 
-          <view class='bgCorF p10 pL20 pR20 box'>
+
+
+
+
+
+
+
+
+
+
+
+
+          <!-- <view class='bgCorF p10 pL20 pR20 box'>
               <text class='flex1'>二天游<text class='f14 pL5 corA'>5户农场、3个景点</text></text>
               <text class='corR'>100元/人</text>
           </view>
@@ -199,7 +211,7 @@
                       <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
                   </view>
               </view>
-          </view>
+          </view> -->
 
 
 
