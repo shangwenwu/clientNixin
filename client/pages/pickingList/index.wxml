@@ -8,19 +8,19 @@
               <view wx:if="{{pickingState.dialogCover}}" class='dialog'>
                 <view class='dialogCon box boxV p10 pL15 pR15'>
                     <view class='itemVe mT5'><icon bindtap="changeDialogCover" type="cancel" size="30" color="#999" /></view>
-                    <view class='mT20 bB1 box f12 lh35 pB5 box boxV'>
+                    <view class='box f12 lh35 pB5 box boxV'>
 
-                        <view class='bgCorF f16 p10 pL20 pR20 bT1 bB1  box boxVc'>
+                        <view class='bgCorF f14 p10 pL20 pR20 bB1  box boxVc'>
                             <view class='cor9'>名称</view>
                             <input class='tr flex1' placeholder="请输入采摘活动名称"  bindblur="savePickingData" data-attr="title"/>
                         </view>
 
-                        <view class='bgCorF f16 p10 pL20 pR20 bT1 bB1  box boxVc'>
+                        <view class='bgCorF f14 p10 pL20 pR20 bB1  box boxVc'>
                             <view class='cor9'>描述</view>
                             <input class='tr flex1' bindblur="savePickingData" placeholder="采摘描述150字内描述.." data-attr="description" maxlength='150'/>
                         </view>
 
-                        <view class='bgCorF f16 p10 pL20 pR20 bT1 bB1  box boxVc'>
+                        <view class='bgCorF f14 p10 pL20 pR20 bB1  box boxVc'>
                             <view class='cor9'>产品</view>
                             <picker class='tr flex1' bindchange="savePickingData" data-attr="product_id" value="{{pickingState.canCreateNameIndex}}" range="{{pickingState.canCreateName}}">
                               <view class="picker">
@@ -29,15 +29,10 @@
                             </picker>
                         </view>
 
-                        <view class='bgCorF p20 bT1'> 
+                        <view class='bgCorF p10 pL20 pR20 box boxVc'> 
                             <image wx:for="{{pickingState.pickingData.pickingimages}}" wx:key="*this" class="productPic" mode="aspectFill" src="{{item}}"></image>
                             <i wx:if="{{!pickingState.pickingData.pickingimages.length}}" class="icon iconfont icon-camerafill corC" style="font-size:60px;" bindtap="getPickingImg"></i>
                         </view>
-
-
-                        
-
-                        
 
                     </view>
                     <view class="corD f14 mT20">
@@ -61,19 +56,18 @@
           </view>
 
 
-          <view wx:for="{{pickingState.pickingInfo}}"  wx:key="*this"  class='box bgCorF p10 pL20 pR20 boxVc'>
+          <view wx:for="{{pickingState.pickingInfo}}"  wx:key="*this"  class='box bgCorF p10 pL20 pR20 boxVc bB1'>
               <view class='box boxV boxVc pR20'>
                   <image class='mR2 mT2 picUser' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                  <text class='fb f14 mT5'>08:00-10:00</text>
-                  <text class='f14'>第一天{{index}}</text>
+                  <text class='f12 mT5'>{{item.create_time}}</text>
+                  <!-- <text class='fb f14 mT5'>{{item.create_time}}</text> -->
+                  <!-- <text class='f14'>第一天</text> -->
               </view>
               <view class='flex1 box boxV f14'>
-                  <text class='corG f16'>采摘草莓1234</text>
-                  <text class='f12 cor6'>采摘信息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述息描述采摘信息描述采摘信息描述采摘信息描述采摘信息描述</text>
+                  <text class='corG f16'>{{item.title}}</text>
+                  <text class='f12 cor6'>{{item.description}}</text>
                   <view class='box'>
-                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
-                      <image class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="http://img4.imgtn.bdimg.com/it/u=2113634730,433751848&fm=27&gp=0.jpg"></image>
+                      <image wx:for="{{item.images}}" class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="{{item}}"></image>
                   </view>
               </view>
           </view>

@@ -203,7 +203,7 @@ page {
 /*dialog*/
 .dialogCover{ position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: #000; opacity:.2; z-index:9999999}
 .dialog{position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index:99999999}
-.dialogCon{ width: 80%; margin:35% auto auto;  background-color: #fff; border-radius: 5px;opacity:1;}
+.dialogCon{ width: 80%; margin:20% auto auto;  background-color: #fff; border-radius: 5px;opacity:1;}
 
 
 

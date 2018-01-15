@@ -1,23 +1,24 @@
 <!--pages/shop/index.wxml-->
 <import src="../productList/index.wxml"/>
 <import src="../pickingList/index.wxml"/>
-<import src="../landList/index.wxml"/>
 <import src="../sortingList/index.wxml"/>
 <import src="../memberList/index.wxml"/>
 
 <view class="box boxV">
-    <image style="width: 100%; height: 140px;" mode="aspectFill" src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3243644476,1991991288&fm=27&gp=0.jpg"></image>
 
-    <text class='f18 pL10 pR10 pT5 fb'>农业蔬菜种植直供队</text>
-    <text class='f12 pL10 pR10 pB5 cor9'>产品5种 成员4人 运输车1辆 直供小区六里桥莲花池南里小区</text>
+      <image style="width: 100%; height: 140px;" mode="aspectFill" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1516016446563&di=e1d8c1d22b2b2f921c0a94d8bf4c67b9&imgtype=0&src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2F500fd9f9d72a6059099ccd5a2334349b023bbae5.jpg"></image>  
 
-    <view class='box f14 mB10 mT5 bgCorF'>
-        <view data-state="1" class='flex1 cursor tc pT10 pB10 {{tabState==1?"bBActive corG":"bB2 corA"}}' bindtap="changeState"><text>团队产品</text></view>
-        <view data-state="2" class='flex1 cursor tc pT10 pB10 {{tabState==2?"bBActive corG":"bB2 corA"}}' bindtap="changeState"><text>旅游采摘</text></view>
-        <view data-state="3" class='flex1 cursor tc pT10 pB10 {{tabState==3?"bBActive corG":"bB2 corA"}}' bindtap="changeState"><text>共享土地</text></view>
-        <view data-state="4" class='flex1 cursor tc pT10 pB10 {{tabState==4?"bBActive corG":"bB2 corA"}}' bindtap="changeState"><text>分拣配送</text></view>
-        <view data-state="5" class='flex1 cursor tc pT10 pB10 {{tabState==5?"bBActive corG":"bB2 corA"}}' bindtap="changeState"><text>团队成员</text></view>
-    </view>
+      <view class='bgCorF box boxV bB1'>
+          <text class='f18 pL10 pR10 pT5 fb'>农业蔬菜种植直供队</text>
+          <text class='f12 pL10 pR10 pB5 cor9'>产品5种 成员1人 运输车0辆 直供小区暂无</text>
+      </view>
+
+      <view class='box f14 mB10 mT5 bgCorF'>
+          <view data-state="1" class='flex1 cursor tc pT10 pB10 {{tabState==1?"bBActive corG":"bB2 corA"}}' bindtap="changeState"><text>团队产品</text></view>
+          <view data-state="2" class='flex1 cursor tc pT10 pB10 {{tabState==2?"bBActive corG":"bB2 corA"}}' bindtap="changeState"><text>旅游采摘</text></view>
+          <view data-state="3" class='flex1 cursor tc pT10 pB10 {{tabState==3?"bBActive corG":"bB2 corA"}}' bindtap="changeState"><text>订单中心</text></view>
+          <view data-state="4" class='flex1 cursor tc pT10 pB10 {{tabState==4?"bBActive corG":"bB2 corA"}}' bindtap="changeState"><text>团队成员</text></view>
+      </view>
 
       <view wx:if="{{tabState == 1 && productListData.length}}">
             <template is="productList" data="{{productListData:productListData}}"/>
@@ -26,12 +27,9 @@
           <template is="pickingList" data="{{pickingState:pickingState,changeDialogCover:changeDialogCover, savePickingData:savePickingData, getPickingImg:getPickingImg,savePicking:savePicking}}"/>
       </view>
       <view wx:if="{{tabState == 3}}">
-          <template is="landList" />
-      </view>
-      <view wx:if="{{tabState == 4}}">
           <template is="sortingList" data="{{showPorduct:showPorduct,productData:productData,currentProductIndex:currentProductIndex,community:community}}"/>
       </view>
-      <view wx:if="{{tabState == 5}}">
+      <view wx:if="{{tabState == 4}}">
           <template is="memberList" />
       </view>
     

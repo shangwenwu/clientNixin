@@ -205,13 +205,9 @@ Page({
       canCreateName.push(item.name);
     });
 
-    that.setData({
-      pickingState: Object.assign(this.data.pickingState, { canCreate: arr, canCreateName: canCreateName, pickingData:Object.assign(this.data.pickingState.pickingData, { product_id: arr[0].category_id })})
-    });
-
     wx.request({
       url: config.service.queryPickingInfo,
-      data: { supply_id: this.data.userInfo.id, product_id:'0,3,0'},
+      data: { supply_id: this.data.userInfo.id},
       method: 'post',
       success(result) {
         let data = result.data.data;
@@ -241,12 +237,19 @@ Page({
           arr.forEach(item => {
             canCreateName.push(item.name);
           });
+          pickingInfo.forEach(row=>{
+            row.images = row.images.split(',');
+            row.create_time = util.formatTime(new Date(row.create_time),'Y/m/d');
+          });
           that.setData({
             pickingState: Object.assign(that.data.pickingState, { pickingInfo: pickingInfo, canCreate: arr, canCreateName: canCreateName, pickingData: Object.assign(that.data.pickingState.pickingData, { product_id: arr.length ? arr[0].category_id : '' })}),
           });
 
+        }else{
+          that.setData({
+            pickingState: Object.assign(that.data.pickingState, { canCreate: arr, canCreateName: canCreateName, pickingData: Object.assign(that.data.pickingState.pickingData, { product_id: arr[0].category_id }) })
+          });
         }
-
         console.log(that.data.pickingState);
       },
       fail(error) {
