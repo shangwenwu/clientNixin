@@ -89,6 +89,7 @@ page {
 .bT1{border-top: 1px solid #eee;}
 .bB1{border-bottom: 1px solid #eee;}
 .bB1Dashed{border-bottom: 1px dashed #f1f1f1;}
+.bBcorG{ border-color:#59C6A6; }
 .b1{border: 1px solid #eee;}
 
 .bB2{border-bottom: 2px solid #ddd;}

@@ -1,5 +1,15 @@
 <template name="sortingList">
 
+
+        <view class='bgCorF mB10 box boxVc p10'>
+            <i class="icon iconfont icon-edit corC mL10 mR15" style="font-size:45px;"></i>
+            <view class='flex1 box boxV'>
+                <text class='f16'>暂无订单信息</text>
+                <!-- <text class='corB f12'>泥信：为了农民的利益最大化而努力；请给我一些时间，谢谢！</text> -->
+                <text class='corB f12'>请先创建团队成为农业职业经理人或加入到其它团队成为一员新时代的农民！</text>
+            </view>
+        </view>
+
           <!-- <scroll-view scroll-x bindscroll="scroll" scroll-top="{{scrollLeft}}">
             
           </scroll-view>

@@ -3,54 +3,13 @@
 
           <!-- 当前用户的 -->
           <view wx:if="canCreate.length">
-
-              <view wx:if="{{pickingState.dialogCover}}" class='dialogCover'></view>
-              <view wx:if="{{pickingState.dialogCover}}" class='dialog'>
-                <view class='dialogCon box boxV p10 pL15 pR15'>
-                    <view class='itemVe mT5'><icon bindtap="changeDialogCover" type="cancel" size="30" color="#999" /></view>
-                    <view class='box f12 lh35 pB5 box boxV'>
-
-                        <view class='bgCorF f14 p10 pL20 pR20 bB1  box boxVc'>
-                            <view class='cor9'>名称</view>
-                            <input class='tr flex1' placeholder="请输入采摘活动名称"  bindblur="savePickingData" data-attr="title"/>
-                        </view>
-
-                        <view class='bgCorF f14 p10 pL20 pR20 bB1  box boxVc'>
-                            <view class='cor9'>描述</view>
-                            <input class='tr flex1' bindblur="savePickingData" placeholder="采摘描述150字内描述.." data-attr="description" maxlength='150'/>
-                        </view>
-
-                        <view class='bgCorF f14 p10 pL20 pR20 bB1  box boxVc'>
-                            <view class='cor9'>产品</view>
-                            <picker class='tr flex1' bindchange="savePickingData" data-attr="product_id" value="{{pickingState.canCreateNameIndex}}" range="{{pickingState.canCreateName}}">
-                              <view class="picker">
-                                {{pickingState.canCreateName[pickingState.canCreateNameIndex]}}
-                              </view>
-                            </picker>
-                        </view>
-
-                        <view class='bgCorF p10 pL20 pR20 box boxVc'> 
-                            <image wx:for="{{pickingState.pickingData.pickingimages}}" wx:key="*this" class="productPic" mode="aspectFill" src="{{item}}"></image>
-                            <i wx:if="{{!pickingState.pickingData.pickingimages.length}}" class="icon iconfont icon-camerafill corC" style="font-size:60px;" bindtap="getPickingImg"></i>
-                        </view>
-
-                    </view>
-                    <view class="corD f14 mT20">
-                      泥信：为了农民的利益最大化而努力！
-                    </view>
-                    <view class='mT20 box p5 pB10'>
-                      <button class='flex1 mR5' type="default" bindtap="changeDialogCover"> 取消 </button>
-                      <button class='flex1 mL5' type="primary" bindtap="savePicking"> 确定 </button>
-                    </view>
-                </view>
-              </view>
               
               <view class="f14 bgCorF p10 box boxV boxVc mB10" wx:if="{{pickingState.canCreate.length}}">
                 <view class='lH25 tc corB'>
                     <view>这些产品可以创建采摘活动</view>
                     <text wx:for="{{pickingState.canCreate}}" wx:key="*this" >{{index ? ',' : ''}}{{item.name}}</text>
                 </view>
-                <button type="primary" class='mT5 mB5' bindtap="" size="mini" bindtap="changeDialogCover"> 创建采摘活动 </button>
+                <button type="primary" class='mT5 mB5' bindtap="" size="mini" bindtap="showPickingDialog"> 创建采摘活动 </button>
               </view>
               
           </view>
@@ -64,9 +23,9 @@
                   <!-- <text class='f14'>第一天</text> -->
               </view>
               <view class='flex1 box boxV f14'>
-                  <text class='corG f16'>{{item.title}}</text>
-                  <text class='f12 cor6'>{{item.description}}</text>
-                  <view class='box'>
+                  <view class='corG f16'>{{item.title}}</view>
+                  <view class='f12 cor6'>{{item.description}}</view>
+                  <view class='box boxWrap'>
                       <image wx:for="{{item.images}}" class='bgCorE wh50 mR2 mT2' mode="aspectFill" src="{{item}}"></image>
                   </view>
               </view>

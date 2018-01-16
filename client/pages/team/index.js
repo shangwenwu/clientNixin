@@ -8,7 +8,7 @@ let category = config.category;
 
 
 Page({
-
+  
   /**
    * 页面的初始数据
    */
@@ -19,7 +19,6 @@ Page({
 
       productListData:[],//团队产品列表
 
-
       pickingState:{
         pickingInfo: [],
         canCreate: [],
@@ -28,6 +27,21 @@ Page({
         dialogCover: false,
         pickingData: {},
       },
+
+      //团队成员 数据
+      teamState:{  
+        createTeamStep:1, //创建团队步骤
+        carImages:[], //货车图片
+
+        addTeamStep:1, //加入团队步骤
+        greenhouseImages:[], //大棚数量
+        certificateImages:[] //资质证书
+      },
+
+
+      
+  
+ 
 
       
       
@@ -51,7 +65,15 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    //创建团队弹框
+    this.managerDialog = this.selectComponent("#managerDialog");
+    //加入团队弹框
+    this.addTeamDialog = this.selectComponent("#addTeamDialog");
+    //创建采摘活动弹框
+    this.pickingDialog = this.selectComponent("#pickingDialog");
+
     var that = this;
+    console.log('onReady');
     wx.getStorage({
       key: 'userInfo',
       success: function (res) {
@@ -62,8 +84,7 @@ Page({
       }
     })
   },
-
-
+  //选项卡切换
   changeState: function (e) {
     let state = e.currentTarget.dataset.state;
     this.setData({
@@ -79,8 +100,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
     // this.getCurrentPosition();
+    console.log('onLoad');
   },
 
   /**
@@ -163,10 +184,17 @@ Page({
   },
 
 
-
-
   
 
+
+
+
+
+  //-------------------------------------------------------------------
+  //采摘信息 弹出框
+  showPickingDialog(event) {
+    this.pickingDialog.showOrHideDialog();
+  },
   //保存 采摘信息
   insertPickingInfo:function(data){
     let that = this;
@@ -182,16 +210,13 @@ Page({
               pickingState: Object.assign(that.data.pickingState, { pickingData: {} }),
             })
             that.queryPickingInfo();
-            that.changeDialogCover();
+            that.pickingDialog.showOrHideDialog();
         }
       },
       fail(error) {
         util.showModel('消息', '增加采摘接口错误！')
       }
     });
-
-    
-
   },
   //删除 采摘信息
   deletePickingInfo: function () { },
@@ -204,7 +229,6 @@ Page({
     arr.forEach(item=>{
       canCreateName.push(item.name);
     });
-
     wx.request({
       url: config.service.queryPickingInfo,
       data: { supply_id: this.data.userInfo.id},
@@ -259,13 +283,6 @@ Page({
     //根据teamID 查找团队的其它成员的采摘信息
     //this.data.userInfo.team_id
   },
-  
-  //点击创建采摘活动按钮触发
-  changeDialogCover: function () {
-    this.setData({
-      pickingState: Object.assign(this.data.pickingState, { dialogCover: !this.data.pickingState.dialogCover })
-    });
-  },
   //保存采摘信息 
   savePickingData(event) {
       var temp = {};
@@ -282,7 +299,7 @@ Page({
       
   },
   /**
-   * 选择产品图片
+   * 选择采摘活动图片
    */
   getPickingImg: function (event) {
     var that = this;
@@ -299,7 +316,7 @@ Page({
       }
     })
   },
-  //保存产品预售信息
+  //保存采摘活动
   savePicking:function(){
     var data = this.data.pickingState.pickingData;
     data.supply_id = this.data.userInfo.id;
@@ -309,6 +326,64 @@ Page({
       util.showModel('消息', '信息不完整！')
     }
   },
+  //-------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+  //-------------------------------------------------------------------
+  //职业经理人
+  //添加运输车 职业经理人
+  showManagerDialog() {
+    this.setData({
+      teamState: Object.assign(data, { createTeamStep: 1 })
+    });
+    this.managerDialog.showOrHideDialog();
+  },
+  //添加职业经理人
+  addManager() {
+    let data = this.data.teamState;
+    if (data.createTeamStep == 1){
+      this.setData({
+        teamState: Object.assign(data, {createTeamStep:2})
+      });
+      console.log(this.data.teamState);
+    }else{
+      this.managerDialog.showOrHideDialog();
+    }
+  },
+
+  //加入团队 
+  showAddTeamDialog() {
+    this.setData({
+      teamState: Object.assign(data, { addTeamStep: 1 })
+    });
+    this.addTeamDialog.showOrHideDialog();
+  },
+  //加入团队
+  addTeam() {
+    let data = this.data.teamState;
+    if (data.addTeamStep == 1) {
+      this.setData({
+        teamState: Object.assign(data, { addTeamStep: 2 })
+      });
+      console.log(this.data.teamState);
+    } else {
+      this.addTeamDialog.showOrHideDialog();
+    }
+    
+  },
+  //-------------------------------------------------------------------
+  
+
+
 
   
 
@@ -316,6 +391,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log('onShow');
     
   },
 
@@ -516,6 +592,21 @@ Page({
   scroll: function (e) {
     this.setData({
       scrollLeft: e.detail.scrollLeft
+    })
+  },
+
+
+
+
+
+
+  /**
+   * 添加产品 添加产品动态
+   */
+  addProduct() {
+    let that = this;
+    wx.navigateTo({
+      url: '../addpro/index?userId=' + that.data.userInfo.id
     })
   }
 

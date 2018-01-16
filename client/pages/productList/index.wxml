@@ -3,6 +3,13 @@
 
 <template name="productList">
 
+                  <view wx:if="{{!productListData.length}}" class='bgCorF mB10 box boxVc p10' bindtap="addProduct">
+                      <i class="icon iconfont icon-roundaddfill corC mL10 mR15" style="font-size:45px;"></i>
+                      <view class='flex1 box boxV'>
+                          <text class='f16'>请添加农产品</text>
+                          <text class='corB f12'>请先添加产品。</text>
+                      </view>
+                  </view>
                  
                  <navigator wx:for="{{productListData}}" wx:key="*this" url= "../detail/index?proId={{item.category_id}}&userId={{item.userId}}" class='mB10 box boxV bgCorF' style="width:30%;  float:left; padding-left:1.65%; padding-right:1.65%; padding-top:10px; padding-bottom:10px;">
                       <image class="proPic" mode="aspectFill" src="{{item.images}}"></image>

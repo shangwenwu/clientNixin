@@ -78,12 +78,6 @@ Page({
       let pro = product_id.split(',');
       return category[2][pro[0]][pro[1]][pro[2]];
   },
-  //点击预售按钮触发
-  changeDialogCover:function(){
-    this.setData({
-      dialogCover: !this.data.dialogCover
-    });
-  },
   /**
    * 删除预售信息 结束销售
    */
@@ -99,7 +93,7 @@ Page({
       method: 'post',
       success(result) {
         if (result.data.data.affectedRows) {
-          that.changeDialogCover();
+          that.showDialog();
           that.changeSalesStatus();
         };
       },
@@ -133,7 +127,7 @@ Page({
       method: 'post',
       success(result) {
         if(result.data.data.affectedRows){
-          that.changeDialogCover();
+          that.showDialog();
           that.changeSalesStatus();
         };
       },
@@ -158,7 +152,13 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () { },
+  onReady: function () { 
+    this.dialog = this.selectComponent("#dialog");
+  },
+  //点击预售按钮触发
+  showDialog() {
+    this.dialog.showOrHideDialog();
+  },
 
   /**
    * 生命周期函数--监听页面显示

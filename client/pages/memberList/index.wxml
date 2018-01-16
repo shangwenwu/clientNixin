@@ -1,18 +1,19 @@
 <template name="memberList">
 
-    <view class='bgCorF mB10 box boxVc p10'>
+
+    <view class='bgCorF mB10 box boxVc p10' bindtap="showManagerDialog" data-index="1">
         <i class="icon iconfont icon-deliver_fill corC mL10 mR15" style="font-size:45px;"></i>
         <view class='flex1 box boxV'>
-            <text class='f16'>添加运输车</text>
-            <text class='corB f12'><text class="fb f14">我是农业职业经理人</text>，负责团队成员管理，产品运输配送，团队成员的产品分拣检查，采摘信息对外发布。</text>
+            <text class='f16'>创建团队</text>
+            <text class='corB f12'><text class="fb corA">我是农业职业经理人</text>，负责团队成员管理，产品运输配送，团队成员的产品分拣检查，采摘信息对外发布。</text>
         </view>
     </view>
 
-    <view class='bgCorF mB10 box boxVc p10'>
+    <view class='bgCorF mB10 box boxVc p10'  bindtap="showAddTeamDialog" data-index="2">
         <i class="icon iconfont icon-group_fill_light corC mL10 mR15" style="font-size:45px;"></i>
         <view class='flex1 box boxV'>
             <text class='f16'>加入其它团队</text>
-            <text class='corB f12'><text class="fb f14">我是一名新农民</text>，负责维护自己的产品信息、采摘信息，产品分拣等工作。</text>
+            <text class='corB f12'><text class="fb corA">我是一名新农民</text>，负责维护自己的产品信息、采摘信息，产品分拣等工作。</text>
         </view>
     </view>
 

@@ -33,36 +33,31 @@
     </scroll-view>
     <view class='box bT1 bgCorF tc'>
         <navigator delta='1' class='flex1 p15 br1' open-type="navigateBack">返回</navigator>
-        <view class='flex1 p15 corG' bindtap="changeDialogCover">
+        <view class='flex1 p15 corG' bindtap="showDialog">
           <text>{{salesStatus ? '正在出售中' : '预计销售'}}</text>
         </view>
     </view>
 
-    <view wx:if="{{dialogCover}}" class='dialogCover'></view>
-    <view wx:if="{{dialogCover}}" class='dialog'>
-      <view class='dialogCon box boxV p10 pL15 pR15'>
-          <view class='itemVe mT5'><icon bindtap="changeDialogCover" type="cancel" size="30" color="#999" /></view>
-          
-          <view class='mT10 corG f20 lH35'>{{userInfo.productName}}</view>
-          <view  wx:if="{{!salesStatus}}" class='mT20 bB1 box f16'>
-              <view class='cor9'>预计售出斤秤</view>
-              <input bindblur="changeWeight" class='tr flex1' placeholder="请输入售出斤秤" data-attr="name"/>
+
+    <dialog id='dialog'
+      title="{{userInfo.productName}}预计出售斤秤"
+      bind:confirmEvent="insertSalesInfo">
+          <view slot="body">
+              <view  wx:if="{{!salesStatus}}" class='f14 p5 pL10 pR10 bB1  box boxVc'>
+                  <view class='cor9'>预计售出斤秤</view>
+                  <input bindblur="changeWeight" class='tr flex1' placeholder="请输入售出斤秤" data-attr="name"/>
+              </view>
+              <view  wx:if="{{!salesStatus}}" class='f14 p5 pL10 pR10 bB1  box boxVc'>
+                  <view class='cor9'>售出价格</view>
+                  <input class='tr flex1' placeholder="请输入售出价格" value="100元/斤" disabled="{{true}}" data-attr="name"/>
+              </view>
+              <view  wx:if="{{salesStatus}}" class='mT20 corG bB1 box pL10 f18 lh35 pB10'>
+                  产品已出售完，结束出售！
+              </view>
+              <view class="corD f14 pL10 pT10">
+                泥信：为了农民的利益最大化而努力！
+              </view>
           </view>
-          <view  wx:if="{{!salesStatus}}" class='mT20 bB1 box f16'>
-              <view class='cor9'>售出价格</view>
-              <input class='tr flex1' placeholder="请输入售出价格" value="100元/斤" disabled="{{true}}" data-attr="name"/>
-          </view>
-          <view  wx:if="{{salesStatus}}" class='mT20 bB1 box f18 lh35 pB5'>
-              产品已出售完，结束出售！
-          </view>
-          <view class="corD f14 mT20">
-            泥信：为了农民的利益最大化而努力！
-          </view>
-          <view class='mT20 box p5 pB10'>
-            <button class='flex1 mR5' type="default" size="mini" bindtap="changeDialogCover"> 取消 </button>
-            <button class='flex1 mL5' type="primary" size="mini" bindtap="insertSalesInfo"> 确定 </button>
-          </view>
-      </view>
-    </view>
+    </dialog>
     
 </view>

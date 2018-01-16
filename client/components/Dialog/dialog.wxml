@@ -1,0 +1,17 @@
+<view wx:if="{{isShow}}" class='dialogCover'></view>
+    <view wx:if="{{isShow}}" class='dialog'>
+      <view class='dialogCon box boxV p10 pL15 pR15'>
+          <view class='mT5 box boxVc'>
+              <view class='flex1 f16 corA'>{{title}}</view>
+              <icon class='itemVe' bindtap="showOrHideDialog" type="cancel" size="30" color="#999"/>
+          </view>
+          <view class='mT10 mB10'>
+              <view wx:if="{{content}}" class='tc f16'>{{content}}</view>
+              <slot wx:else name="body"></slot>
+          </view>
+          <view class='box p5 pB10' wx:if="{{buttons}}">
+            <button class='flex1 lH35 mR5' type="default" bindtap="showOrHideDialog"> 取消 </button>
+            <button class='flex1 lH35 mL5' type="primary" bindtap="_confirmEvent"> {{confrimText}} </button>
+          </view>
+      </view>
+    </view>
