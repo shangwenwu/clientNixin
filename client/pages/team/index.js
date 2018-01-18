@@ -5,6 +5,7 @@ var data = require('./data.js');
 let util = require('../../utils/util.js')
 let config = require('../../config')
 let category = config.category;
+let carType = config.carType;
 
 
 Page({
@@ -31,12 +32,21 @@ Page({
       //团队成员 数据
       teamState:{  
         createTeamStep:1, //创建团队步骤
-        carImages:[], //货车图片
+        // addTeamStep:1, //加入团队步骤
 
-        addTeamStep:1, //加入团队步骤
-        greenhouseImages:[], //大棚数量
-        certificateImages:[] //资质证书
+        managerData:{},
+        supplyData:{},
       },
+
+      
+
+      region: ['省', '市', '县'],
+      customItem: '全部', 
+      
+      carType: carType,
+      carIndex: 0,
+
+      
 
 
       
@@ -93,6 +103,10 @@ Page({
     //采摘
     if (state == 2) {
         this.queryPickingInfo();
+    }
+    if(state == 4){
+      // this.queryManager() 
+      this.queryTeam()
     }
   },
 
@@ -339,46 +353,200 @@ Page({
 
 
   //-------------------------------------------------------------------
+  //查询有没有创建团队 是不是职业经理人
+  // this.queryManager() this.queryTeam()
+  queryManager() {
+    wx.request({
+      url: config.service.queryTeamInfo,
+      data: { supply_id: this.data.userInfo.id },
+      method: 'post',
+      success(result) {
+        debugger;
+      },
+      fail(error) {
+        util.showModel('消息', '查询创建团队接口错误！')
+      }
+    });
+  },
+  //查询有没有加入团队  关联的团队
+  queryTeam() {
+    wx.request({
+      url: config.service.querySupplyTeamInfo,
+      data: { supply_id: this.data.userInfo.id },
+      method: 'post',
+      success(result) {
+        debugger;
+      },
+      fail(error) {
+        util.showModel('消息', '查询关联信息接口错误！')
+      }
+    });
+  },
+
   //职业经理人
   //添加运输车 职业经理人
   showManagerDialog() {
     this.setData({
-      teamState: Object.assign(data, { createTeamStep: 1 })
+      teamState: Object.assign(this.data.teamState, { createTeamStep: 1, managerData:{}}),
+      region: ['省', '市', '县'],
+      carIndex: 0
     });
     this.managerDialog.showOrHideDialog();
   },
   //添加职业经理人
-  addManager() {
+  addManager(event) {
+    let that = this;
     let data = this.data.teamState;
-    if (data.createTeamStep == 1){
+    let field = event.currentTarget.dataset.attr, o={};
+    if (field) {
+      o[field] = event.detail.value;
+      this.setManagerData(o);
+      return;
+    }
+    let res = data.managerData;
+    if (data.createTeamStep == 1 && res.driver_name && res.driver_mobile.length == 11 && res.driver_address && res.driver_address[2] != '全部' && res.car_type && res.car_images){
       this.setData({
-        teamState: Object.assign(data, {createTeamStep:2})
+        teamState: Object.assign(data, { createTeamStep: 2 })
       });
-      console.log(this.data.teamState);
-    }else{
-      this.managerDialog.showOrHideDialog();
+    } else if (data.createTeamStep == 2 && res.team_name && res.community && res.team_photo) {
+      
+      //数据请求
+      console.log(res);
+      let params = Object.assign({}, res);
+      params.car_images = params.car_images.toString();
+      params.driver_address = params.driver_address.toString();
+      params.supply_id = that.data.userInfo.id
+      wx.request({
+        url: config.service.insertTeamInfo,
+        data: params,
+        method: 'post',
+        success(result) {
+          if (result.data.data.insertId) {
+            that.managerDialog.showOrHideDialog();
+          }
+        },
+        fail(error) {
+          util.showModel('消息', '创建团队接口错误！')
+        }
+      });
+
+    }else {
+      util.showModel('消息', '请认真填写信息！')
     }
   },
-
+  setManagerData(obj){
+    let teamState = this.data.teamState;
+    let managerData = Object.assign(teamState.managerData,obj);
+    this.setData({
+      teamState: Object.assign(teamState, managerData)
+    });
+    console.log(this.data.teamState.managerData);
+  },
+  //选择省市县
+  bindRegionChange: function (e) {
+    let field = JSON.parse(event.data).data.data[3].currentTarget.dataset.attr;
+    let o = {};
+    if(field == 'car_type'){
+      this.setData({
+        carIndex: e.detail.value
+      })
+      o.car_type = this.data.carType[e.detail.value];
+    } else if (field == 'driver_address'){
+      this.setData({
+        region: e.detail.value
+      })
+      o.driver_address = e.detail.value;
+    }
+    if (field == 'address1'){
+      this.setData({
+        region: e.detail.value
+      })
+      o.address1 = e.detail.value;
+      this.setSupplyData(o);
+    }else{
+      this.setManagerData(o);
+    }
+  },
+  getTeamImg: function (event) {
+    let field = event.currentTarget.dataset.attr;
+    var that = this;
+    wx.chooseImage({
+      count: 3, // 默认9
+      sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        if (field == 'car_images'){
+          that.setManagerData({ car_images: res.tempFilePaths });
+        }else{
+          let o = {};
+          o[field] = res.tempFilePaths;
+          that.setSupplyData(o);
+        }
+      }
+    })
+  },
+  setSupplyData(obj){
+    let teamState = this.data.teamState;
+    let supplyData = Object.assign(teamState.supplyData, obj);
+    this.setData({
+      teamState: Object.assign(teamState, supplyData)
+    });
+    console.log(this.data.teamState.supplyData);
+  },
   //加入团队 
   showAddTeamDialog() {
+    this.data.teamState.supplyData = {};
     this.setData({
-      teamState: Object.assign(data, { addTeamStep: 1 })
+      teamState: this.data.teamState,//addTeamStep: 1, 
     });
     this.addTeamDialog.showOrHideDialog();
   },
   //加入团队
-  addTeam() {
+  addTeam(event) {
+    let that = this;
     let data = this.data.teamState;
-    if (data.addTeamStep == 1) {
-      this.setData({
-        teamState: Object.assign(data, { addTeamStep: 2 })
+    let field = event.currentTarget.dataset.attr, o = {};
+    if (field) {
+      o[field] = event.detail.value;
+      this.setSupplyData(o);
+      return;
+    }
+    let res = data.supplyData;
+    //data.addTeamStep == 1 && 
+    if (res.name && res.mobile.length == 11 && res.address && res.greenhouse_num && res.greenhouse_img && res.certificate && res.address1 && res.address1[2] != '全部') {
+      // this.setData({
+      //   teamState: Object.assign(data, { addTeamStep: 2 })
+      // });
+
+      let params = Object.assign({}, this.data.teamState.supplyData);
+      params.address = params.address1.toString() +','+ params.address;
+      params.certificate = params.certificate.toString();
+      params.greenhouse_img = params.greenhouse_img.toString();
+
+      delete params.address1;
+
+      wx.request({
+        url: config.service.updateUserInfo,
+        data: { data: params, id: that.data.userInfo.id},
+        method: 'post',
+        success(result) {
+          if (result.data.data) {
+            that.addTeamDialog.showOrHideDialog();
+          }
+        },
+        fail(error) {
+          util.showModel('消息', '创建团队接口错误！')
+        }
       });
       console.log(this.data.teamState);
-    } else {
-      this.addTeamDialog.showOrHideDialog();
+    } else{
+      util.showModel('消息', '请认真填写信息！');
     }
-    
+
+    // else if (data.addTeamStep == 2 && res.team_id) {
+    //   this.addTeamDialog.showOrHideDialog();
+    // }
+
   },
   //-------------------------------------------------------------------
   

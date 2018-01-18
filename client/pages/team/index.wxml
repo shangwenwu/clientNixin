@@ -7,55 +7,62 @@
 <view class="box boxV">
 
       <dialog id='addTeamDialog'
-        title="成为新农民,加入团队"
-        confrimText="{{teamState.addTeamStep == 1 ? '下一步' : '确认'}}"
+        title="成为新农民"
+        confrimText="确认"
         bind:confirmEvent="addTeam">
             <view slot="body" class='box boxV'>
-                <view class='box f14'>
+                <!-- <view class='box f14'>
+                    confrimText="{{teamState.addTeamStep == 1 ? '下一步' : '确认'}}"
                     <view class='flex1 bB1 tc p10 {{teamState.addTeamStep == 1 ? "corG fb bBcorG" : "corA"}}'>1.基本信息</view>
                     <view class='flex1 bB1 tc p10 {{teamState.addTeamStep == 2 ? "corG fb bBcorG" : "corA"}}'>2.选择团队</view>
-                </view>
-
-                <view wx:if="{{teamState.addTeamStep == 1}}">
+                </view> -->
+                 <!-- wx:if="{{teamState.addTeamStep == 1}}" -->
+                <view>
                       <view class=' f14 p5 pL10 pR10 bB1  box boxVc'>
                           <view class='cor9'>农户姓名</view>
-                          <input class='tr flex1' placeholder="请输入农户姓名"  bindblur="" data-attr="title"/>
+                          <input class='tr flex1' placeholder="请输入农户姓名"  bindblur="addTeam" data-attr="name"/>
                       </view>
                       <view class=' f14 p5 pL10 pR10 bB1  box boxVc'>
                           <view class='cor9'>手机号码</view>
-                          <input class='tr flex1' placeholder="请输入手机号码"  bindblur="" data-attr="title"/>
+                          <input class='tr flex1' placeholder="请输入手机号码"  type="number" bindblur="addTeam" data-attr="mobile"/>
+                      </view>
+                      <view class=' f14 p5 pL10 pR10 bB1  box boxVc'>
+                          <view class='cor9'>农户所在县</view>
+                            <picker class='tr flex1 lH25' mode="region" bindchange="bindRegionChange" data-attr="address1" value="{{region}}" custom-item="{{customItem}}">
+                                {{region[0]}}，{{region[1]}}，{{region[2]}}
+                            </picker>
                       </view>
                       <view class=' f14 p5 pL10 pR10 bB1  box boxVc'>
                           <view class='cor9'>农户地址</view>
-                          <input class='tr flex1' placeholder="请输入农户地址"  bindblur="" data-attr="title"/>
+                          <input class='tr flex1' placeholder="请输入农户地址"  bindblur="addTeam" data-attr="address"/>
                       </view>
                       <view class=' f14 p2 pL10 pR10 bB1  box boxVc'>
                           <view class='cor9'>大棚数量</view>
-                          <input class='tr flex1' placeholder="请输入大棚数量"  bindblur="" data-attr="title"/>
+                          <input class='tr flex1' placeholder="请输入大棚数量"  type="number" bindblur="addTeam" data-attr="greenhouse_num"/>
                       </view>
                       <view class=' f14 p2 pL10 pR10 bB1 box boxVc'> 
                             <view class='cor9'>大棚图片</view>
                             <view class='flex1 box boxWrap'>
                               <view class="flex1"></view>
-                              <image wx:for="{{teamState.greenhouseImages}}" wx:key="*this" class="productPic itemVe" mode="aspectFill" src="{{item}}"></image>
-                              <i wx:if="{{!teamState.greenhouseImages.length}}" class="icon iconfont icon-camerafill corC itemVe" style="font-size:60px;" bindtap=""></i> 
+                              <image wx:for="{{teamState.supplyData.greenhouse_img}}" wx:key="*this" class="productPic itemVe" mode="aspectFill" src="{{item}}"></image>
+                              <i wx:if="{{!teamState.supplyData.greenhouse_img.length}}" class="icon iconfont icon-camerafill corC itemVe" style="font-size:60px;" data-attr="greenhouse_img" bindtap="getTeamImg"></i> 
                             </view>
                       </view>
                       <view class=' f14 p2 pL10 pR10 bB1 box boxVc'> 
                             <view class='cor9'>资质证书</view>
                             <view class='flex1 box boxWrap'>
                               <view class="flex1"></view>
-                              <image wx:for="{{teamState.certificateImages}}" wx:key="*this" class="productPic itemVe" mode="aspectFill" src="{{item}}"></image>
-                              <i wx:if="{{!teamState.certificateImages.length}}" class="icon iconfont icon-camerafill corC itemVe" style="font-size:60px;" bindtap=""></i>
+                              <image wx:for="{{teamState.supplyData.certificate}}" wx:key="*this" class="productPic itemVe" mode="aspectFill" src="{{item}}"></image>
+                              <i wx:if="{{!teamState.supplyData.certificate.length}}" class="icon iconfont icon-camerafill corC itemVe" style="font-size:60px;" data-attr="certificate" bindtap="getTeamImg"></i>
                             </view>
                       </view>
                 </view>
-                <view wx:else>
+                <!-- <view wx:else>
                     <view class=' f14 p5 pL10 pR10 bB1  box boxVc'>
                           <view class='cor9'>选择团队</view>
-                          <input class='tr flex1' placeholder="请选择团队"  bindblur="" data-attr="title"/>
+                          <input class='tr flex1' placeholder="请选择团队"  bindblur="addTeam" data-attr="team_id"/>
                     </view>
-                </view>
+                </view> -->
                 <view class="corD f14 pL10 pT5">
                   泥信：为了农民的利益最大化而努力！
                 </view>
@@ -73,45 +80,49 @@
                     <view class='flex1 bB1 tc p10 {{teamState.createTeamStep == 1 ? "corG fb bBcorG" : "corA"}}'>1.运输车型</view>
                     <view class='flex1 bB1 tc p10 {{teamState.createTeamStep == 2 ? "corG fb bBcorG" : "corA"}}'>2.创建团队</view>
                 </view>
-
+                
                 <view wx:if="{{teamState.createTeamStep == 1}}">
                       <view class=' f14 p5 pL10 pR10 bB1  box boxVc'>
-                          <view class='cor9'>司机姓名</view>
-                          <input class='tr flex1' placeholder="请输入司机姓名"  bindblur="" data-attr="title"/>
+                          <view class='cor9'>司机姓名</view> 
+                          <input class='tr flex1' placeholder="请输入司机姓名"  bindblur="addManager" data-attr="driver_name"/>
                       </view>
                       <view class=' f14 p5 pL10 pR10 bB1  box boxVc'>
                           <view class='cor9'>手机号码</view>
-                          <input class='tr flex1' placeholder="请输入手机号码"  bindblur="" data-attr="title"/>
+                          <input class='tr flex1' placeholder="请输入手机号码" type="number"  bindblur="addManager" data-attr="driver_mobile"/>
                       </view>
                       <view class=' f14 p5 pL10 pR10 bB1  box boxVc'>
                           <view class='cor9'>所在市县</view>
-                          <input class='tr flex1' placeholder="请选择市县"  bindblur="" data-attr="title"/>
+                            <picker class='tr flex1 lH25' mode="region" bindchange="bindRegionChange" data-attr="driver_address" value="{{region}}" custom-item="{{customItem}}">
+                                {{region[0]}}，{{region[1]}}，{{region[2]}}
+                            </picker>
                       </view>
                       <view class=' f14 p5 pL10 pR10 bB1  box boxVc'>
                           <view class='cor9'>选择车型</view>
-                          <input class='tr flex1' placeholder="请选择城市"  bindblur="" data-attr="title"/>
+                          <picker class='tr flex1' bindchange="bindRegionChange" data-attr="car_type" value="{{carIndex}}" range="{{carType}}">
+                              {{carType[carIndex]}}
+                          </picker>
                       </view>
                       <view class=' f14 p2 pL10 pR10 bB1 box boxVc'> 
                             <view class='cor9'>货车照片</view>
                             <view class='flex1 box boxWrap'>
                               <view class="flex1"></view>
-                              <image wx:for="{{teamState.carImages}}" wx:key="*this" class="productPic itemVe" mode="aspectFill" src="{{item}}"></image>
-                              <i wx:if="{{!teamState.carImages.length}}" class="icon iconfont icon-camerafill corC itemVe" style="font-size:60px;" bindtap=""></i>
+                              <image wx:for="{{teamState.managerData.car_images}}" wx:key="*this" class="productPic itemVe" mode="aspectFill" src="{{item}}"></image>
+                              <i wx:if="{{!teamState.managerData.car_images.length}}" class="icon iconfont icon-camerafill corC itemVe" style="font-size:60px;" data-attr="car_images" bindtap="getTeamImg"></i>
                             </view>
                       </view>
                 </view>
                 <view wx:else>
-                    <view class=' f14 p5 pL10 pR10 bB1  box boxVc'>
+                    <view class=' f14 p5 pL10 pR10 bB1  box boxVc'> 
                           <view class='cor9'>团队名称</view>
-                          <input class='tr flex1' placeholder="请输入团队名称"  bindblur="" data-attr="title"/>
+                          <input class='tr flex1' placeholder="请输入团队名称"  bindblur="addManager" data-attr="team_name"/>
                     </view>
                     <view class=' f14 p5 pL10 pR10 bB1  box boxVc'>
                           <view class='cor9'>配送小区</view>
-                          <input class='tr flex1' placeholder="请选择配送小区"  bindblur="" data-attr="title"/>
+                          <input class='tr flex1' placeholder="请选择配送小区"  bindblur="addManager" data-attr="community"/>
                     </view>
                     <view class=' f14 p5 pL10 pR10 bB1  box boxVc'>
                           <view class='cor9'>团队照片</view>
-                          <input class='tr flex1' placeholder="请输入团队名称"  bindblur="" data-attr="title"/>
+                          <input class='tr flex1' placeholder="请输入团队名称"  bindblur="addManager" data-attr="team_photo"/>
                     </view>
                 </view>
                 <view class="corD f14 pL10 pT5">

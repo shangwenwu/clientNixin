@@ -12,6 +12,7 @@ var config = {
         host,
 
         saveUserInfo: `${host}/saveUserInfo`,
+        updateUserInfo: `${host}/updateUserInfo`,
         // saveProduct: `${host}/saveProduct`,
         findUserInfo: `${host}/findUserName`,
         addProductId: `${host}/addProductId`,
@@ -36,6 +37,22 @@ var config = {
         queryPickingInfo: `${host}/queryPickingInfo`,
 
 
+        //保存 创建团队信息
+        insertTeamInfo: `${host}/insertTeamInfo`,
+        //删除 团队信息
+        deleteTeamInfo: `${host}/deleteTeamInfo`,
+        //查询 团队信息
+        queryTeamInfo: `${host}/queryTeamInfo`,
+
+
+        //保存 农户与团队关联信息
+        insertSupplyTeamInfo: `${host}/insertSupplyTeamInfo`,
+        //删除 关联信息
+        deleteSupplyTeamInfo: `${host}/deleteSupplyTeamInfo`,
+        //查询 关联信息
+        querySupplyTeamInfo: `${host}/querySupplyTeamInfo`,
+
+
 
 
         // 登录地址，用于建立会话
@@ -50,6 +67,19 @@ var config = {
         // 上传图片接口
         uploadUrl: `${host}/weapp/upload`
     },
+    carType: [
+      '选择车型',
+      '微型面包车',
+      '面包车',
+      '大面包车',
+      '商务车',
+      '平顶金杯',
+      '高顶金杯',
+      '依维柯/全顺',
+      '4米2箱货',
+      '5米2箱货',
+      '6米8箱货'],
+
     category : [
       ['蔬菜', '水果'],
       [

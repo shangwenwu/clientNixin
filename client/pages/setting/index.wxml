@@ -20,7 +20,7 @@
     </view>
 
 
-<view class='bgCorF f16 p10 pL20 pR20 bT1 bB1  box boxVc'>
+<!-- <view class='bgCorF f16 p10 pL20 pR20 bT1 bB1  box boxVc'>
         <view class='cor9'>供应商姓名</view>
         <input class='tr flex1' placeholder="请输入姓名" value="{{supplier.name ? supplier.name : ''}}" bindconfirm="saveData" data-attr="name"/>
 </view> 
@@ -62,6 +62,6 @@
 
     <view class='p20'>
         <button type="default" style="background-color:#59C6A6; color:#fff;" > 保 存 </button>
-    </view>     
+    </view>      -->
 
 </view>
